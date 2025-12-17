@@ -258,8 +258,8 @@ function toggleSound() {
 }
 
 const observerOptions = {
-    threshold: 0.15, // Trigger when 15% of the item is visible
-    rootMargin: "0px 0px -50px 0px" // Offset slightly so it triggers before bottom
+    threshold: 0.15, 
+    rootMargin: "0px 0px -50px 0px" 
 };
 
 const scrollObserver = new IntersectionObserver((entries) => {
@@ -267,32 +267,27 @@ const scrollObserver = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             entry.target.classList.add('is-visible');
             
-            // If this element has a counter, start counting!
             if (entry.target.hasAttribute('data-count')) {
                 startCounter(entry.target);
             }
             
-            // Stop watching once revealed (so it doesn't flash again)
             scrollObserver.unobserve(entry.target);
         }
     });
 }, observerOptions);
 
-// Initialize on load
 document.addEventListener('DOMContentLoaded', () => {
     const revealElements = document.querySelectorAll('.reveal-on-scroll');
     revealElements.forEach(el => scrollObserver.observe(el));
     
-    // Initialize Countdown
     startCountdown();
 });
 
-// B. NUMBER COUNTER ANIMATION
 function startCounter(el) {
     const target = parseInt(el.getAttribute('data-target'));
-    const suffix = el.getAttribute('data-suffix') || ""; // e.g., "+" or "x"
-    const duration = 2000; // 2 seconds to finish
-    const stepTime = 20; // Update every 20ms
+    const suffix = el.getAttribute('data-suffix') || ""; 
+    const duration = 2000; 
+    const stepTime = 20; 
     const steps = duration / stepTime;
     const increment = target / steps;
     
@@ -331,4 +326,63 @@ function startCountdown() {
         document.getElementById('cd-hours').innerText = hours;
         document.getElementById('cd-min').innerText = minutes;
     }, 1000);
+}
+
+function toggleMobileMenu() {
+    const overlay = document.getElementById('mobile-menu-overlay');
+    const backdrop = document.getElementById('mobile-backdrop');
+    const sidebar = document.getElementById('mobile-sidebar');
+    
+    const isOpen = sidebar.classList.contains('translate-x-0');
+
+    if (isOpen) {
+        sidebar.classList.remove('translate-x-0');
+        sidebar.classList.add('translate-x-full');
+        
+        backdrop.classList.remove('opacity-100');
+        backdrop.classList.add('opacity-0');
+        
+        setTimeout(() => {
+            overlay.classList.add('pointer-events-none');
+            document.body.style.overflow = 'auto'; 
+        }, 300);
+        
+    } else {
+        overlay.classList.remove('pointer-events-none');
+        
+        requestAnimationFrame(() => {
+            sidebar.classList.remove('translate-x-full');
+            sidebar.classList.add('translate-x-0');
+            
+            backdrop.classList.remove('opacity-0');
+            backdrop.classList.add('opacity-100');
+        });
+
+        document.body.style.overflow = 'hidden'; 
+    }
+}
+
+function updateRouteBadge() {
+    const route = getRoute();
+    const count = route.length;
+    
+    const desktopBadge = document.getElementById('nav-badge');
+    if (desktopBadge) {
+        if (count > 0) {
+            desktopBadge.innerText = count;
+            desktopBadge.classList.remove('hidden');
+        } else {
+            desktopBadge.classList.add('hidden');
+        }
+    }
+
+    const mobileBadge = document.getElementById('mobile-nav-badge');
+    if (mobileBadge) {
+        if (count > 0) {
+            mobileBadge.innerText = count;
+            mobileBadge.classList.remove('hidden');
+        } else {
+            mobileBadge.classList.add('hidden');
+        }
+    }
 }

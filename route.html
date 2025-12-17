@@ -45,6 +45,7 @@
 
     <nav class="fixed w-full z-50 bg-brand-snow/95 backdrop-blur-md shadow-sm transition-all duration-300 border-b border-brand-gold/20">
         <div class="max-w-[1600px] mx-auto px-6 h-24 flex items-center justify-between">
+            
             <a href="index.html" class="flex items-center gap-3 group">
                 <div class="bg-brand-red p-2 rounded-lg shadow-md transition-transform group-hover:scale-105">
                     <i data-lucide="snowflake" class="text-white w-6 h-6"></i>
@@ -53,13 +54,18 @@
             </a>
             
             <div class="hidden md:flex items-center gap-10 font-serif font-bold text-lg">
-                <a href="index.html" class="text-gray-400 hover:text-brand-red transition-colors">Home</a>
-                <a href="gallery.html" class="text-gray-400 hover:text-brand-red transition-colors">Gallery</a>
-                <a href="route.html" class="text-brand-red flex items-center gap-2">
-                    My Route
-                    <span id="nav-badge" class="hidden bg-brand-gold text-brand-red text-[12px] font-bold px-2 py-0.5 rounded-full ml-2 shadow-sm">0</span>                
+                <a href="index.html" class="hover:text-brand-red transition-colors text-brand-charcoal">Home</a>
+                <a href="gallery.html" class="hover:text-brand-red transition-colors text-brand-charcoal">Gallery</a>
+                <a href="route.html" class="bg-brand-cream text-brand-charcoal px-6 py-2 rounded-full hover:bg-brand-red hover:text-white transition-all text-base flex items-center gap-2">
+                    My Route 
+                    <span id="nav-badge" class="hidden bg-white text-brand-red text-[12px] font-bold px-2 py-0.5 rounded-full border-2 border-brand-red ml-2 shadow-sm">0</span>
                 </a>
             </div>
+
+            <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-brand-red hover:bg-brand-cream rounded-lg transition-colors">
+                <i data-lucide="menu" width="28" height="28"></i>
+            </button>
+
         </div>
     </nav>
 
@@ -190,6 +196,45 @@
         <button onclick="hideToast()" class="text-gray-400 hover:text-gray-600">
             <i data-lucide="x" width="18"></i>
         </button>
+    </div>
+
+    <div id="mobile-menu-overlay" class="fixed inset-0 z-[60] pointer-events-none">
+        
+        <div id="mobile-backdrop" onclick="toggleMobileMenu()" class="absolute inset-0 bg-brand-charcoal/60 backdrop-blur-sm opacity-0 transition-opacity duration-300 ease-in-out"></div>
+
+        <div id="mobile-sidebar" class="absolute top-0 right-0 h-full w-[80%] max-w-[300px] bg-brand-snow shadow-2xl transform translate-x-full transition-transform duration-500 cubic-bezier(0.16, 1, 0.3, 1) flex flex-col">
+            
+            <div class="p-6 flex justify-between items-center border-b border-gray-100">
+                <span class="font-serif font-bold text-xl text-brand-red">Menu</span>
+                <button onclick="toggleMobileMenu()" class="p-2 bg-brand-cream rounded-full text-brand-charcoal hover:bg-brand-red hover:text-white transition-colors">
+                    <i data-lucide="x" width="20"></i>
+                </button>
+            </div>
+
+            <div class="flex-1 p-8 flex flex-col gap-6 font-serif text-2xl font-bold text-brand-charcoal">
+                <a href="index.html" class="flex items-center gap-4 hover:text-brand-red transition-colors group">
+                    <i data-lucide="home" class="text-brand-gold group-hover:text-brand-red transition-colors" width="24"></i> 
+                    Home
+                </a>
+                <a href="gallery.html" class="flex items-center gap-4 hover:text-brand-red transition-colors group">
+                    <i data-lucide="images" class="text-brand-gold group-hover:text-brand-red transition-colors" width="24"></i> 
+                    Gallery
+                </a>
+                <a href="route.html" class="flex items-center gap-4 hover:text-brand-red transition-colors group">
+                    <i data-lucide="map-pin" class="text-brand-gold group-hover:text-brand-red transition-colors" width="24"></i> 
+                    My Route
+                    <span id="mobile-nav-badge" class="hidden bg-brand-red text-white text-xs px-2 py-1 rounded-full ml-auto">0</span>
+                </a>
+            </div>
+
+            <div class="p-8 bg-brand-cream">
+                <p class="text-xs text-gray-500 font-sans mb-4 uppercase tracking-wider">Follow Us</p>
+                <div class="flex gap-4 text-brand-red">
+                    <i data-lucide="instagram" width="24"></i>
+                    <i data-lucide="facebook" width="24"></i>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
