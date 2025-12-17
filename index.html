@@ -101,15 +101,26 @@
                 </div>
             </div>
 
-            <div class="relative h-[500px]">
-                <div class="bg-brand-red text-white p-12 rounded-[2.5rem] h-full flex flex-col justify-end shadow-2xl relative overflow-hidden group hover:scale-[1.02] transition-transform duration-500">
-                    <div class="absolute -top-32 -right-32 w-80 h-80 bg-red-500 rounded-full blur-3xl opacity-50"></div>
+            <div class="h-[550px] rounded-[2.5rem] overflow-hidden shadow-2xl flex flex-col group">
+                
+                <div class="relative h-3/5 w-full overflow-hidden">
+                    <img 
+                        src="assets/zagreb_map.jpg" 
+                        alt="Magical Map of Zagreb" 
+                        class="w-full h-full object-cover object-bottom transition-transform duration-1000 group-hover:scale-105"
+                    >
+                    <div class="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-brand-red via-brand-red/50 to-transparent"></div>
+                </div>
+
+                <div class="relative h-2/5 bg-brand-red p-8 flex flex-col justify-center overflow-hidden">
+                    
+                    <div class="absolute -top-20 -right-20 w-64 h-64 bg-red-500 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
                     
                     <div class="relative z-10">
-                        <h3 class="text-4xl font-serif font-bold mb-3">Explore the Gallery</h3>
-                        <p class="text-red-100 mb-8 text-lg font-light">View all locations and plan your route.</p>
+                        <h3 class="text-3xl font-serif font-bold mb-3 text-white">Explore the Gallery</h3>
+                        <p class="text-red-100 mb-6 text-base font-light leading-relaxed">View all magical locations on the map and plan your route.</p>
                         
-                        <a href="gallery.html" class="w-full bg-white/20 backdrop-blur-md border border-white/30 text-white font-bold py-4 rounded-xl hover:bg-white hover:text-brand-red transition-all text-center flex items-center justify-center gap-2">
+                        <a href="gallery.html" class="w-full bg-white/20 backdrop-blur-md border border-white/40 text-white font-bold py-4 rounded-xl hover:bg-white hover:text-brand-red transition-all text-center flex items-center justify-center gap-2 shadow-md">
                             Open Gallery
                         </a>
                     </div>
