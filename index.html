@@ -48,7 +48,10 @@
             <div class="hidden md:flex items-center gap-10 font-serif font-bold text-lg">
                 <a href="index.html" class="text-brand-red">Home</a>
                 <a href="gallery.html" class="text-gray-400 hover:text-brand-red transition-colors">Gallery</a>
-                <a href="route.html" class="bg-gray-100 text-gray-800 px-6 py-2 rounded-full hover:bg-brand-red hover:text-white transition-all text-base">My Route</a>
+                <a href="route.html" class="bg-gray-100 text-gray-800 px-6 py-2 rounded-full hover:bg-brand-red hover:text-white transition-all text-base flex items-center gap-2">
+                My Route 
+                 <span id="nav-badge" class="hidden bg-brand-red text-white text-[10px] font-bold px-2 py-0.5 rounded-full border border-white/20">0</span>
+                </a>
             </div>
         </div>
     </nav>
@@ -262,6 +265,19 @@
             </div>
         </div>
     </footer>
+
+    <div id="toast-notification" class="fixed bottom-8 right-8 z-[110] bg-white border border-gray-100 shadow-2xl rounded-2xl p-4 flex items-center gap-4 min-w-[300px] transform translate-x-[150%] transition-transform duration-500 ease-in-out">
+        <div class="bg-green-100 p-2 rounded-full text-green-600">
+            <i data-lucide="check" width="20"></i>
+        </div>
+        <div class="flex-1">
+            <h4 id="toast-title" class="font-bold text-gray-900 text-sm">Success</h4>
+            <p id="toast-message" class="text-xs text-gray-500">Location added to route.</p>
+        </div>
+        <button onclick="hideToast()" class="text-gray-400 hover:text-gray-600">
+            <i data-lucide="x" width="18"></i>
+        </button>
+    </div>
 
     <script src="script.js"></script>
     <script>

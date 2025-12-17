@@ -47,8 +47,11 @@
             <div class="hidden md:flex items-center gap-10 font-serif font-bold text-lg">
                 <a href="index.html" class="text-gray-400 hover:text-brand-red transition-colors">Home</a>
                 <a href="gallery.html" class="text-gray-400 hover:text-brand-red transition-colors">Gallery</a>
-                <a href="route.html" class="text-brand-red">My Route</a>
-            </div>
+                <a href="route.html" class="text-brand-red flex items-center gap-2">
+                    My Route
+                    <span id="nav-badge" class="hidden bg-brand-red text-white text-[10px] font-bold px-2 py-0.5 rounded-full">0</span>
+                </a>
+                </div>
         </div>
     </nav>
 
@@ -87,11 +90,11 @@
                             <label class="font-bold text-gray-700 text-lg flex items-center gap-2">
                                 <i data-lucide="clock" width="20"></i> Time Available
                             </label>
-                            <span id="time-value" class="text-blue-600 font-bold text-2xl">3h 0m</span>
+                            <span id="time-value" class="text-coral-600 font-bold text-2xl">3h 0m</span>
                         </div>
                         <input 
                             type="range" id="time-slider" min="30" max="480" step="30" value="180" 
-                            class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
+                            class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer bg-brand-coral"
                         >
                     </div>
 
@@ -167,6 +170,19 @@
             </div>
         </div>
     </footer>
+
+<div id="toast-notification" class="fixed bottom-8 right-8 z-[110] bg-white border border-gray-100 shadow-2xl rounded-2xl p-4 flex items-center gap-4 min-w-[300px] transform translate-x-[150%] transition-transform duration-500 ease-in-out">
+        <div class="bg-green-100 p-2 rounded-full text-green-600">
+            <i data-lucide="check" width="20"></i>
+        </div>
+        <div class="flex-1">
+            <h4 id="toast-title" class="font-bold text-gray-900 text-sm">Success</h4>
+            <p id="toast-message" class="text-xs text-gray-500">Location added to route.</p>
+        </div>
+        <button onclick="hideToast()" class="text-gray-400 hover:text-gray-600">
+            <i data-lucide="x" width="18"></i>
+        </button>
+    </div>
 
     <script src="script.js"></script>
     <script>

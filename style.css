@@ -27,7 +27,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, button, input, span, div {
 
 .snowflake {
     position: absolute;
-    color: #bfdbfe; 
+    color: #E6C87A; 
     pointer-events: none;
     top: -20px;
     animation: fall linear forwards;
@@ -38,8 +38,8 @@ body, h1, h2, h3, h4, h5, h6, p, a, button, input, span, div {
 }
 
 ::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: #f1f1f1; }
-::-webkit-scrollbar-thumb { background: #A31621; border-radius: 5px; }
+::-webkit-scrollbar-track { background: #F4EFEA; } 
+::-webkit-scrollbar-thumb { background: #B11226; border-radius: 5px; } 
 
 .hero-overlay {
     background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
