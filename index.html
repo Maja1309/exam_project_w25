@@ -7,28 +7,27 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // This keeps the styling but hides the "production" warning in console
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            red: '#b91c1c',     /* Deep Red */
-                            coral: '#fb7185',   /* Pink/Coral from your screenshot */
-                            dark: '#7f1d1d',    
-                        }
-                    },
-                    fontFamily: {
-                        serif: ['Playfair Display', 'serif'],
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    boxShadow: {
-                        'card': '0 10px 40px -10px rgba(0,0,0,0.08)',
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    brand: {
+                        red: '#b91c1c',     
+                        coral: '#fb7185',   
+                        dark: '#7f1d1d',    
                     }
+                },
+                fontFamily: {
+                    serif: ['Playfair Display', 'serif'],
+                    sans: ['Playfair Display', 'serif'], 
+                },
+                boxShadow: {
+                    'card': '0 10px 40px -10px rgba(0,0,0,0.08)',
                 }
             }
         }
-    </script>
+    }
+</script>
     
     <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -61,7 +60,7 @@
             muted 
             playsinline 
             class="absolute inset-0 w-full h-full object-cover rounded-3xl"
-            id="hero-video"
+            id="hero_video"
         >
             <source src="assets/hero_video.mp4" type="video/mp4">
         </video>
