@@ -1,128 +1,114 @@
-
-function createSnowflake() {
-    const snowContainer = document.getElementById('snow-container');
-    
-    if (!snowContainer) return;
-
-    const snowflake = document.createElement('div');
-    snowflake.classList.add('snowflake');
-    
-    snowflake.style.left = Math.random() * 100 + 'vw';
-    snowflake.style.animationDuration = Math.random() * 3 + 2 + 's'; 
-    snowflake.style.opacity = Math.random();
-    snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
-    snowflake.innerHTML = '❄'; 
-
-    snowContainer.appendChild(snowflake);
-
-    setTimeout(() => {
-        snowflake.remove();
-    }, 5000);
-}
-
-setInterval(createSnowflake, 100);
-
-function toggleSound() {
-    const video = document.getElementById('hero_video');
-    const icon = document.getElementById('sound-icon');
-    
-    if (!video) {
-        console.error("Video not found! Check HTML ID.");
-        return;
-    }
-    
-    if (video.muted) {
-        video.muted = false;
-        
-        video.play().catch(error => {
-            console.log("Playback failed:", error);
-        });
-
-        icon.setAttribute('data-lucide', 'volume-2'); 
-    } else {
-        video.muted = true;
-        icon.setAttribute('data-lucide', 'volume-x');
-    }
-    
-    lucide.createIcons();
-}
-function addToRoute(id) {
-    alert("Added location " + id + " to your route!");
-}
-
 const LOCATIONS = {
     1: {
+        id: 1,
         title: "Zrinjevac Park",
         subtitle: "A Romantic Waltz of Lights",
-        desc: "Escape into an old-world fairytale. Zrinjevac is the most elegant spot in the city, famous for its historic music pavilion which hosts live classical and jazz concerts every evening. Surrounded by 220 century-old plane trees wrapped in thousands of white lights, this market focuses on handmade ornaments, fried apples, and authentic local crafts. It is the perfect spot for a romantic evening walk.",
-        time: "60",
-        cost: "10",
+        desc: "Escape into an old-world fairytale. Zrinjevac is the most elegant spot in the city, famous for its historic music pavilion.",
+        time: 60,
+        cost: 10,
         category: "Atmosphere",
         image: "assets/card_zrinjevac.png",
         mapLink: "https://www.google.com/maps/search/?api=1&query=Zrinjevac+Park+Zagreb"
     },
     2: {
+        id: 2,
         title: "Trg Bana Jelačića",
         subtitle: "The Beating Heart of Advent",
-        desc: "The main square is the central hub of the festivities. Here you will find the largest Christmas tree in the city and the Manduševac fountain transformed into a giant Advent candle display. The square is packed with traditional white cottages offering the best hearty winter food: sausages, mulled wine, and fritule. It is bustling, loud, and full of holiday spirit.",
-        time: "45",
-        cost: "15",
+        desc: "The main square is the central hub of the festivities. Here you will find the largest Christmas tree in the city.",
+        time: 45,
+        cost: 15,
         category: "Main Event",
         image: "assets/card_trg.png",
         mapLink: "https://www.google.com/maps/search/?api=1&query=Trg+bana+Josipa+Jelačića+Zagreb"
     },
     3: {
+        id: 3,
         title: "Ice Park Tomislavac",
         subtitle: "A Frozen Fairytale",
-        desc: "Located in front of the majestic Art Pavilion, this is one of the largest open-air ice skating rinks in this part of Europe. The tracks wind through the park trees, allowing you to skate under golden lights while listening to festive music. Even if you don't skate, the observation deck offers a stunning view of the skaters and the historic architecture.",
-        time: "90",
-        cost: "25",
+        desc: "Located in front of the majestic Art Pavilion, this is one of the largest open-air ice skating rinks in this part of Europe.",
+        time: 90,
+        cost: 25,
         category: "Activity",
         image: "assets/card_ice.png",
         mapLink: "https://www.google.com/maps/search/?api=1&query=Ledeni+park+Trg+kralja+Tomislava+Zagreb"
     },
     4: {
+        id: 4,
         title: "Upper Town (Gornji Grad)",
         subtitle: "History with a View",
-        desc: "Climb the funicular to the medieval Upper Town for the most photogenic spots in Zagreb. The vibe here is intimate and artistic, featuring small concerts in courtyards and stunning panoramic views of the city lights below. Key spots include the St. Mark's Church and the Gradec Plateau photo points. It is quieter, cozier, and utterly magical.",
-        time: "75",
-        cost: "12",
+        desc: "Climb the funicular to the medieval Upper Town for the most photogenic spots in Zagreb. The vibe here is intimate and artistic.",
+        time: 75,
+        cost: 12,
         category: "Sightseeing",
         image: "assets/card_upper.png",
         mapLink: "https://maps.app.goo.gl/zagreb_upper"
     },
     5: {
+        id: 5,
         title: "Fuliranje (Strossmayer)",
         subtitle: "Gourmet Street Food & Vibes",
-        desc: "If you are a foodie, this is your paradise. Fuliranje (Fooling Around) is known for hosting the best chefs and restaurants in Croatia who create special street-food menus just for Advent. Expect gourmet burgers, asian fusion, craft cocktails, and hot gin. The atmosphere is modern and energetic, with DJs playing funk, soul, and disco beats all night long.",
-        time: "120",
-        cost: "30",
+        desc: "If you are a foodie, this is your paradise. Fuliranje is known for hosting the best chefs and restaurants in Croatia.",
+        time: 120,
+        cost: 30,
         category: "Food & Drink",
         image: "assets/card_fuliranje.png",
         mapLink: "https://maps.app.goo.gl/zagreb_fuliranje"
     },
     6: {
+        id: 6,
         title: "Tunel Grič",
         subtitle: "Underground Winter Wonderland",
-        desc: "Experience Christmas from a different perspective. This pedestrian tunnel under the medieval city is transformed into a surreal 'Polar Dream'. 3D light installations, ceiling sculptures, and ambient choir music create a mysterious and calm atmosphere. It is a quick but unforgettable walk that feels like stepping into another dimension.",
-        time: "30",
-        cost: "0",
+        desc: "Experience Christmas from a different perspective. This pedestrian tunnel is transformed into a surreal 'Polar Dream'.",
+        time: 30,
+        cost: 0,
         category: "Experience",
         image: "assets/card_tunel.png",
         mapLink: "https://maps.app.goo.gl/zagreb_tunel"
     }
 };
 
+
+function getRoute() {
+    return JSON.parse(localStorage.getItem('myRoute')) || [];
+}
+
+function addToRoute(id) {
+    let route = getRoute();
+    if (!route.includes(id)) {
+        route.push(id);
+        localStorage.setItem('myRoute', JSON.stringify(route));
+        alert("Added to your route!");
+        updateRouteBadge(); 
+    } else {
+        alert("This location is already in your route.");
+    }
+}
+
+function removeFromRoute(id) {
+    let route = getRoute();
+    route = route.filter(itemId => itemId !== id);
+    localStorage.setItem('myRoute', JSON.stringify(route));
+    
+    if (window.location.pathname.includes('route.html')) {
+        renderRoutePage(); 
+    }
+    updateRouteBadge();
+}
+
+function updateRouteBadge() {
+    console.log("Current route count:", getRoute().length);
+}
+
+
 function openModal(id) {
     const data = LOCATIONS[id];
     const modal = document.getElementById('details-modal');
-    
     if (!data || !modal) return;
 
     document.getElementById('modal-image').src = data.image;
     document.getElementById('modal-category').innerText = data.category;
     document.getElementById('modal-title').innerText = data.title;
-    document.getElementById('modal-subtitle').innerText = data.subtitle; 
+    document.getElementById('modal-subtitle').innerText = data.subtitle;
     document.getElementById('modal-desc').innerText = data.desc;
     document.getElementById('modal-time').innerText = "~" + data.time + " min";
     document.getElementById('modal-cost').innerText = "~" + data.cost + " EUR";
@@ -132,7 +118,7 @@ function openModal(id) {
     addBtn.onclick = function() { addToRoute(id); closeModal(); };
 
     modal.classList.remove('hidden');
-    modal.classList.add('flex'); 
+    modal.classList.add('flex');
     document.body.style.overflow = 'hidden'; 
 }
 
@@ -147,27 +133,157 @@ function closeModal() {
 
 window.onclick = function(event) {
     const modal = document.getElementById('details-modal');
-    if (event.target == modal) {
-        closeModal();
-    }
+    if (event.target == modal) closeModal();
 }
 
-function createSnowflake() {
+
+function renderRoutePage() {
+    const routeContainer = document.getElementById('route-list');
+    if (!routeContainer) return; 
+
+    const savedIds = getRoute();
+    const budget = parseInt(document.getElementById('budget-slider').value);
+    const timeLimit = parseInt(document.getElementById('time-slider').value);
+
+    document.getElementById('budget-value').innerText = budget + " €";
+    
+    const h = Math.floor(timeLimit / 60);
+    const m = timeLimit % 60;
+    document.getElementById('time-value').innerText = h + "h " + m + "m";
+
+    if (savedIds.length === 0) {
+        routeContainer.innerHTML = `
+            <div class="flex flex-col items-center justify-center py-20 text-center">
+                <div class="w-20 h-20 bg-brand-red/10 rounded-full flex items-center justify-center mb-6">
+                    <i data-lucide="map-pin" class="text-brand-red w-10 h-10"></i>
+                </div>
+                <h3 class="text-2xl font-serif font-bold text-gray-400 mb-2">Your planner is empty</h3>
+                <p class="text-gray-400 mb-8">Go to the gallery to start adding locations.</p>
+                <a href="gallery.html" class="bg-brand-red text-white px-8 py-3 rounded-xl font-bold hover:bg-brand-dark transition shadow-lg">Browse Gallery</a>
+            </div>
+        `;
+        document.getElementById('total-cost').innerText = "0 €";
+        document.getElementById('total-time').innerText = "0h 0m";
+        document.getElementById('location-count').innerText = "0 Locations";
+        lucide.createIcons();
+        return;
+    }
+
+    let html = '';
+    let currentCost = 0;
+    let currentTime = 0;
+
+    savedIds.forEach((id, index) => {
+        const item = LOCATIONS[id];
+        currentCost += item.cost;
+        currentTime += item.time;
+
+        html += `
+            <div class="bg-white border border-gray-100 p-6 rounded-2xl flex gap-6 items-start relative hover:shadow-lg transition-shadow">
+                <div class="w-10 h-10 rounded-full bg-brand-red text-white flex items-center justify-center font-bold text-lg flex-shrink-0">
+                    ${index + 1}
+                </div>
+                
+                <div class="flex-1">
+                    <div class="flex justify-between items-start mb-2">
+                        <h4 class="text-xl font-bold font-serif text-gray-900">${item.title}</h4>
+                        <div class="flex gap-2">
+                             <a href="${item.mapLink}" target="_blank" class="text-gray-400 hover:text-blue-600 transition">
+                                <i data-lucide="map" width="20"></i>
+                             </a>
+                             <button onclick="removeFromRoute(${id})" class="text-gray-400 hover:text-red-600 transition">
+                                <i data-lucide="trash-2" width="20"></i>
+                             </button>
+                        </div>
+                    </div>
+                    <p class="text-gray-500 text-sm mb-4 line-clamp-2">${item.desc}</p>
+                    
+                    <div class="flex gap-4">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-gray-50 rounded-lg text-xs font-bold text-gray-600">
+                            <i data-lucide="clock" width="14" class="text-brand-red"></i> ${item.time} min
+                        </span>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-gray-50 rounded-lg text-xs font-bold text-gray-600">
+                            <i data-lucide="euro" width="14" class="text-brand-red"></i> ~${item.cost}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+
+    routeContainer.innerHTML = html;
+    document.getElementById('location-count').innerText = savedIds.length + " Locations";
+
+    document.getElementById('total-cost').innerText = currentCost + " €";
+    
+    const totalH = Math.floor(currentTime / 60);
+    const totalM = currentTime % 60;
+    document.getElementById('total-time').innerText = totalH + "h " + totalM + "m";
+
+    const costBox = document.getElementById('total-cost-box');
+    if (currentCost > budget) {
+        costBox.classList.add('bg-red-50', 'border-red-200');
+        costBox.classList.remove('bg-gray-50');
+        document.getElementById('total-cost').classList.add('text-red-600');
+        document.getElementById('budget-warning').classList.remove('hidden');
+    } else {
+        costBox.classList.remove('bg-red-50', 'border-red-200');
+        costBox.classList.add('bg-gray-50');
+        document.getElementById('total-cost').classList.remove('text-red-600');
+        document.getElementById('budget-warning').classList.add('hidden');
+    }
+
+    const timeBox = document.getElementById('total-time-box');
+    if (currentTime > timeLimit) {
+        timeBox.classList.add('bg-red-50', 'border-red-200');
+        timeBox.classList.remove('bg-gray-50');
+        document.getElementById('total-time').classList.add('text-red-600');
+        document.getElementById('time-warning').classList.remove('hidden');
+    } else {
+        timeBox.classList.remove('bg-red-50', 'border-red-200');
+        timeBox.classList.add('bg-gray-50');
+        document.getElementById('total-time').classList.remove('text-red-600');
+        document.getElementById('time-warning').classList.add('hidden');
+    }
+
+    lucide.createIcons();
+}
+
+
+function initSnow() {
     const snowContainer = document.getElementById('snow-container');
     if (!snowContainer) return;
-    const snowflake = document.createElement('div');
-    snowflake.classList.add('snowflake');
-    snowflake.style.left = Math.random() * 100 + 'vw';
-    snowflake.style.animationDuration = Math.random() * 3 + 2 + 's'; 
-    snowflake.style.opacity = Math.random();
-    snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
-    snowflake.innerHTML = '❄'; 
-    snowContainer.appendChild(snowflake);
-    setTimeout(() => { snowflake.remove(); }, 5000);
+    const s = document.createElement('div');
+    s.classList.add('snowflake');
+    s.style.left = Math.random() * 100 + 'vw';
+    s.style.animationDuration = Math.random() * 3 + 2 + 's'; 
+    s.style.fontSize = Math.random() * 10 + 10 + 'px';
+    s.innerHTML = '❄'; 
+    snowContainer.appendChild(s);
+    setTimeout(() => s.remove(), 5000);
 }
-setInterval(createSnowflake, 100);
+setInterval(initSnow, 100);
 
-function addToRoute(id) {
-    const name = LOCATIONS[id] ? LOCATIONS[id].title : "Location";
-    alert("Added " + name + " to your route!");
+document.addEventListener('DOMContentLoaded', () => {
+    if (document.getElementById('route-list')) {
+        renderRoutePage();
+        
+        document.getElementById('budget-slider').addEventListener('input', renderRoutePage);
+        document.getElementById('time-slider').addEventListener('input', renderRoutePage);
+    }
+});
+
+function toggleSound() {
+    const video = document.getElementById('hero_video');
+    const icon = document.getElementById('sound-icon');
+    if (!video) return;
+    if (video.muted) {
+        video.muted = false;
+        video.play().catch(e => console.log(e));
+        icon.setAttribute('data-lucide', 'volume-2'); 
+    } else {
+        video.muted = true;
+        icon.setAttribute('data-lucide', 'volume-x');
+    }
+    lucide.createIcons();
 }

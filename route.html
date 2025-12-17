@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advent Zagreb - My Route</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#b91c1c',     
+                            coral: '#fb7185',   
+                            dark: '#7f1d1d',    
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'card': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50 text-gray-900 flex flex-col min-h-screen">
+    
+    <div id="snow-container" class="fixed inset-0 pointer-events-none z-50 overflow-hidden"></div>
+
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-sm transition-all duration-300 border-b border-gray-100">
+        <div class="max-w-[1600px] mx-auto px-6 h-24 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="bg-brand-red p-2 rounded-lg shadow-md transition-transform group-hover:scale-105">
+                    <i data-lucide="snowflake" class="text-white w-6 h-6"></i>
+                </div>
+                <span class="text-2xl font-serif font-bold text-brand-red tracking-tight">Advent<span class="text-gray-900">Zagreb</span></span>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-10 font-serif font-bold text-lg">
+                <a href="index.html" class="text-gray-400 hover:text-brand-red transition-colors">Home</a>
+                <a href="gallery.html" class="text-gray-400 hover:text-brand-red transition-colors">Gallery</a>
+                <a href="route.html" class="text-brand-red">My Route</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="mt-24 bg-brand-red py-12 text-center shadow-md">
+        <h1 class="text-4xl md:text-5xl font-serif font-bold text-white tracking-wide">My Route</h1>
+    </header>
+
+    <main class="max-w-[1400px] mx-auto px-6 py-16">
+        <h2 class="text-4xl font-serif font-bold text-gray-900 mb-8 uppercase tracking-tight">Your Route Plan</h2>
+
+        <div class="grid lg:grid-cols-12 gap-8">
+            
+            <div class="lg:col-span-4 space-y-6">
+                <div class="bg-white p-8 rounded-3xl shadow-card border border-gray-100 sticky top-32">
+                    <h3 class="font-bold text-gray-400 uppercase text-xs tracking-widest mb-8">Constraints</h3>
+                    
+                    <div class="mb-10">
+                        <div class="flex justify-between mb-4 items-end">
+                            <label class="font-bold text-gray-700 text-lg flex items-center gap-2">
+                                <i data-lucide="euro" width="20"></i> Budget
+                            </label>
+                            <span id="budget-value" class="text-brand-red font-bold text-2xl">50 €</span>
+                        </div>
+                        <input 
+                            type="range" id="budget-slider" min="10" max="200" value="50" 
+                            class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-brand-red"
+                        >
+                        <div class="flex justify-between text-xs text-gray-400 mt-2 font-bold uppercase">
+                            <span>Low Budget</span>
+                            <span>Luxury</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-10">
+                        <div class="flex justify-between mb-4 items-end">
+                            <label class="font-bold text-gray-700 text-lg flex items-center gap-2">
+                                <i data-lucide="clock" width="20"></i> Time Available
+                            </label>
+                            <span id="time-value" class="text-blue-600 font-bold text-2xl">3h 0m</span>
+                        </div>
+                        <input 
+                            type="range" id="time-slider" min="30" max="480" step="30" value="180" 
+                            class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
+                        >
+                    </div>
+
+                    <hr class="border-gray-100 my-8"/>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div id="total-cost-box" class="p-4 rounded-2xl bg-gray-50 border border-gray-100 transition-colors">
+                            <span class="text-xs uppercase text-gray-500 font-bold block mb-1 tracking-wider">Total Cost</span>
+                            <div id="total-cost" class="text-3xl font-bold text-gray-800">0 €</div>
+                        </div>
+                        
+                        <div id="total-time-box" class="p-4 rounded-2xl bg-gray-50 border border-gray-100 transition-colors">
+                            <span class="text-xs uppercase text-gray-500 font-bold block mb-1 tracking-wider">Duration</span>
+                            <div id="total-time" class="text-3xl font-bold text-gray-800">0h 0m</div>
+                        </div>
+                    </div>
+
+                    <div id="budget-warning" class="hidden mt-4 p-3 bg-red-100 text-red-700 text-xs font-bold rounded-xl flex items-center gap-2">
+                        <i data-lucide="alert-circle" width="16"></i> Over Budget!
+                    </div>
+                    <div id="time-warning" class="hidden mt-2 p-3 bg-red-100 text-red-700 text-xs font-bold rounded-xl flex items-center gap-2">
+                        <i data-lucide="alert-circle" width="16"></i> Not enough time!
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="lg:col-span-8">
+                <div class="bg-white rounded-3xl shadow-card border border-gray-100 overflow-hidden min-h-[600px]">
+                    <div class="bg-brand-red p-6 flex justify-between items-center">
+                        <h3 class="font-bold text-white text-xl">Detailed Itinerary</h3>
+                        <span id="location-count" class="bg-white px-4 py-1.5 rounded-full text-xs font-bold text-gray-900 shadow-sm">
+                            0 Locations
+                        </span>
+                    </div>
+
+                    <div id="route-list" class="p-8 space-y-4">
+                        </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-brand-red text-white pt-16 pb-12 mt-auto">
+        <div class="max-w-[1600px] mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-12 border-b border-white/20 pb-12">
+                <div>
+                    <h4 class="font-sans font-bold text-sm tracking-widest mb-6 uppercase opacity-80">Opening Hours</h4>
+                    <div class="space-y-2 text-white text-sm font-medium">
+                        <p class="flex justify-between max-w-[200px]"><span class="opacity-70">MON - FRI</span> <span>11 - 22</span></p>
+                        <p class="flex justify-between max-w-[200px]"><span class="opacity-70">SATURDAY</span> <span>10 - 23</span></p>
+                        <p class="flex justify-between max-w-[200px]"><span class="opacity-70">SUNDAY</span> <span>10 - 21</span></p>
+                    </div>
+                </div>
+                <div class="hidden md:flex flex-col items-center justify-center">
+                    <i data-lucide="snowflake" class="w-12 h-12 mb-4 text-white opacity-20"></i>
+                </div>
+                <div class="md:text-right">
+                     <h4 class="font-sans font-bold text-sm tracking-widest mb-6 uppercase opacity-80">Social Media</h4>
+                     <div class="flex md:justify-end gap-4">
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-brand-red transition-all"><i data-lucide="instagram" width="20"></i></a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-brand-red transition-all"><i data-lucide="facebook" width="20"></i></a>
+                     </div>
+                </div>
+            </div>
+            <div class="pt-8 flex flex-col md:flex-row justify-between items-center text-[10px] text-white/60 uppercase font-bold tracking-widest gap-4">
+                <div class="flex gap-8">
+                    <a href="#" class="hover:text-white transition-colors">About</a>
+                    <a href="#" class="hover:text-white transition-colors">Privacy</a>
+                </div>
+                <p>© 2025 Advent Zagreb.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
