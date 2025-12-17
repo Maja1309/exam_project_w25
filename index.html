@@ -7,56 +7,63 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-    tailwind.config = {
-        theme: {
-            extend: {
-                colors: {
-                    brand: {
-                        red: '#b91c1c',     
-                        coral: '#fb7185',   
-                        dark: '#7f1d1d',    
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#B11226',
+                            bright: '#D62828',
+                            gold: '#C9A24D',
+                            champagne: '#E6C87A',
+                            green: '#1F5C4A',
+                            forest: '#123B2A',
+                            snow: '#FAFAF8',
+                            cream: '#F4EFEA',
+                            charcoal: '#2B2B2B',
+                            coral: '#C9A24D',
+                            dark: '#123B2A',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Playfair Display', 'serif'], 
+                    },
+                    boxShadow: {
+                        'card': '0 10px 40px -10px rgba(43, 43, 43, 0.08)', 
                     }
-                },
-                fontFamily: {
-                    serif: ['Playfair Display', 'serif'],
-                    sans: ['Playfair Display', 'serif'], 
-                },
-                boxShadow: {
-                    'card': '0 10px 40px -10px rgba(0,0,0,0.08)',
                 }
             }
         }
-    }
-</script>
+    </script>
     
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-white text-gray-900 flex flex-col min-h-screen">
+<body class="bg-brand-snow text-brand-charcoal flex flex-col min-h-screen">
     <div id="snow-container" class="fixed inset-0 pointer-events-none z-50 overflow-hidden"></div>
 
-    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-sm transition-all duration-300 border-b border-gray-100">
+    <nav class="fixed w-full z-50 bg-brand-snow/95 backdrop-blur-md shadow-sm transition-all duration-300 border-b border-brand-gold/20">
         <div class="max-w-[1600px] mx-auto px-6 h-24 flex items-center justify-between">
             <a href="index.html" class="flex items-center gap-3 group">
                 <div class="bg-brand-red p-2 rounded-lg shadow-md transition-transform group-hover:scale-105">
                     <i data-lucide="snowflake" class="text-white w-6 h-6"></i>
                 </div>
-                <span class="text-2xl font-serif font-bold text-brand-red tracking-tight">Advent<span class="text-gray-900">Zagreb</span></span>
+                <span class="text-2xl font-serif font-bold text-brand-red tracking-tight">Advent<span class="text-brand-charcoal">Zagreb</span></span>
             </a>
             
             <div class="hidden md:flex items-center gap-10 font-serif font-bold text-lg">
                 <a href="index.html" class="text-brand-red">Home</a>
                 <a href="gallery.html" class="text-gray-400 hover:text-brand-red transition-colors">Gallery</a>
-                <a href="route.html" class="bg-gray-100 text-gray-800 px-6 py-2 rounded-full hover:bg-brand-red hover:text-white transition-all text-base flex items-center gap-2">
+                <a href="route.html" class="bg-brand-cream text-brand-charcoal px-6 py-2 rounded-full hover:bg-brand-red hover:text-white transition-all text-base flex items-center gap-2">
                 My Route 
-                 <span id="nav-badge" class="hidden bg-brand-red text-white text-[10px] font-bold px-2 py-0.5 rounded-full border border-white/20">0</span>
-                </a>
+                <span id="nav-badge" class="hidden bg-white text-brand-red text-[12px] font-bold px-2 py-0.5 rounded-full border-2 border-brand-red ml-2 shadow-sm">0</span>                </a>
             </div>
         </div>
     </nav>
 
-<header class="relative h-[85vh] w-full overflow-hidden mt-24 mx-auto max-w-[95%] rounded-3xl">
+    <header class="relative h-[85vh] w-full overflow-hidden mt-24 mx-auto max-w-[95%] rounded-3xl">
         <video 
             autoplay 
             loop 
@@ -70,11 +77,11 @@
 
         <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 rounded-3xl"></div>
 
-       
+        
 
-        <button onclick="toggleSound()" class="absolute bottom-8 right-8 z-20 bg-white/20 backdrop-blur-md border border-white/30 text-white p-3 rounded-full hover:bg-white hover:text-brand-red transition-all group">
-    <i id="sound-icon" data-lucide="volume-x" class="w-6 h-6"></i>
-</button>
+        <button onclick="toggleSound()" class="absolute bottom-8 right-8 z-20 bg-brand-snow/20 backdrop-blur-md border border-white/30 text-white p-3 rounded-full hover:bg-brand-snow hover:text-brand-red transition-all group">
+            <i id="sound-icon" data-lucide="volume-x" class="w-6 h-6"></i>
+        </button>
     </header>
 
     <main class="max-w-[1600px] mx-auto px-6 py-20 space-y-32">
@@ -82,25 +89,48 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             
             <div class="space-y-8">
-                <span class="inline-block bg-brand-coral text-white px-6 py-1.5 rounded-full font-bold text-xs tracking-widest uppercase shadow-sm">
+                <span class="reveal-on-scroll inline-block bg-brand-gold text-white px-6 py-1.5 rounded-full font-bold text-xs tracking-widest uppercase shadow-sm">
                     Welcome
                 </span>
-                <h2 class="text-5xl md:text-6xl font-serif font-bold text-gray-900 leading-[1.1]">
+                
+                <h2 class="reveal-on-scroll delay-100 text-5xl md:text-6xl font-serif font-bold text-brand-charcoal leading-[1.1]">
                     The Magic of the <br> festive season.
                 </h2>
-                <p class="text-lg text-gray-500 leading-relaxed font-light">
-                    During Advent, Zagreb offers a special atmosphere which must be experienced. The city streets and squares invite you to let your hair down and partake in singing, dancing, and other kinds of entertainment with family and friends.
+                
+                <p class="reveal-on-scroll delay-200 text-lg text-gray-500 leading-relaxed font-light">
+                    During Advent, Zagreb offers a special atmosphere which must be experienced...
                 </p>
 
-                <div class="flex gap-6 mt-8">
-                    <div class="bg-white border border-gray-100 p-6 rounded-2xl shadow-card w-40">
-                        <span class="block text-3xl font-bold text-brand-red mb-1">25+</span>
+                <div class="grid grid-cols-2 gap-4 mt-8 max-w-lg">
+                    
+                    <div class="reveal-on-scroll delay-300 bg-white border border-gray-100 p-6 rounded-2xl shadow-card hover:shadow-lg transition-all hover:-translate-y-1">
+                        <span class="block text-3xl font-bold text-brand-red mb-1">
+                            <span data-target="25" data-suffix="+" data-count>25+</span>
+                        </span>
                         <span class="text-xs font-bold text-gray-600 uppercase tracking-wide">Unique Locations</span>
                     </div>
-                    <div class="bg-white border border-gray-100 p-6 rounded-2xl shadow-card w-40">
-                        <span class="block text-3xl font-bold text-brand-red mb-1">3x</span>
+
+                    <div class="reveal-on-scroll delay-300 bg-white border border-gray-100 p-6 rounded-2xl shadow-card hover:shadow-lg transition-all hover:-translate-y-1">
+                        <span class="block text-3xl font-bold text-brand-red mb-1">
+                            <span data-target="3" data-suffix="x" data-count>3</span>
+                        </span>
                         <span class="text-xs font-bold text-gray-600 uppercase tracking-wide">Award Winner</span>
                     </div>
+
+                    <div class="reveal-on-scroll delay-300 bg-white border border-gray-100 p-6 rounded-2xl shadow-card hover:shadow-lg transition-all hover:-translate-y-1">
+                        <span class="block text-3xl font-bold text-brand-red mb-1">
+                            <span data-target="40" data-suffix="" data-count>40</span>
+                        </span>
+                        <span class="text-xs font-bold text-gray-600 uppercase tracking-wide">Days of Magic</span>
+                    </div>
+
+                    <div class="reveal-on-scroll delay-300 bg-white border border-gray-100 p-6 rounded-2xl shadow-card hover:shadow-lg transition-all hover:-translate-y-1">
+                        <span class="block text-3xl font-bold text-brand-red mb-1">
+                            <span data-target="100" data-suffix="+" data-count>100+</span>
+                        </span>
+                        <span class="text-xs font-bold text-gray-600 uppercase tracking-wide">Concerts</span>
+                    </div>
+
                 </div>
             </div>
 
@@ -110,7 +140,7 @@
                     <img 
                         src="assets/zagreb_map.jpg" 
                         alt="Magical Map of Zagreb" 
-                        class="w-full h-full object-cover object-bottom transition-transform duration-1000 group-hover:scale-105"
+                        class="reveal-on-scroll w-full h-full object-cover object-bottom transition-transform duration-1000 group-hover:scale-105"
                     >
                     <div class="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-brand-red via-brand-red/50 to-transparent"></div>
                 </div>
@@ -125,11 +155,11 @@
                         
                         <div class="flex gap-3">
                             
-                            <a href="gallery.html" class="flex-1 bg-white/20 backdrop-blur-md border border-white/40 text-white font-bold py-3 rounded-xl hover:bg-white hover:text-brand-red transition-all text-center flex items-center justify-center gap-2 shadow-md text-sm">
+                            <a href="gallery.html" class="flex-1 bg-brand-snow/20 backdrop-blur-md border border-white/40 text-white font-bold py-3 rounded-xl hover:bg-brand-snow hover:text-brand-red transition-all text-center flex items-center justify-center gap-2 shadow-md text-sm">
                                 <i data-lucide="images" width="16"></i> Open Gallery
                             </a>
 
-                            <a href="https://www.adventzagreb.hr/documents/AdventMap2025.pdf" target="_blank" class="flex-1 bg-white/20 backdrop-blur-md border border-white/40 text-white font-bold py-3 rounded-xl hover:bg-white hover:text-brand-red transition-all text-center flex items-center justify-center gap-2 shadow-md text-sm">
+                            <a href="https://www.adventzagreb.hr/documents/AdventMap2025.pdf" target="_blank" class="flex-1 bg-brand-snow/20 backdrop-blur-md border border-white/40 text-white font-bold py-3 rounded-xl hover:bg-brand-snow hover:text-brand-red transition-all text-center flex items-center justify-center gap-2 shadow-md text-sm">
                                 <i data-lucide="map" width="16"></i> Official Map
                             </a>
                         
@@ -141,8 +171,8 @@
         </div>
 
         <div>
-            <div class="flex items-end justify-between mb-12 border-b border-gray-100 pb-6">
-                <h2 class="text-5xl font-serif font-bold text-gray-900">Top Attractions</h2>
+            <div class="reveal-on-scroll flex items-end justify-between mb-12 border-b border-gray-100 pb-6">
+                <h2 class="text-5xl font-serif font-bold text-brand-charcoal">Top Attractions</h2>
                 <a href="gallery.html" class="text-brand-red text-xl font-bold hover:gap-4 transition-all flex items-center gap-2 group">
                     View all <i data-lucide="arrow-right" class="group-hover:translate-x-1 transition-transform"></i>
                 </a>
@@ -150,10 +180,10 @@
 
            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
-                <div class="bg-white rounded-[2.5rem] border border-gray-100 shadow-card overflow-hidden hover:shadow-2xl transition-all duration-300 group flex flex-col h-full">
+                <div class="reveal-on-scroll delay-100 bg-white rounded-[2.5rem] border border-gray-100 shadow-card overflow-hidden hover:shadow-2xl transition-all duration-300 group flex flex-col h-full">
                     <div class="h-64 overflow-hidden relative p-2">
                         <img src="assets/card_zrinjevac.png" class="w-full h-full object-cover rounded-[2rem] group-hover:scale-105 transition-transform duration-700" alt="Zrinjevac">
-                        <span class="absolute top-6 right-6 bg-brand-coral text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide shadow-sm">Atmosphere</span>
+                        <span class="absolute top-6 right-6 bg-brand-gold text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide shadow-sm">Atmosphere</span>
                     </div>
                     <div class="px-8 pb-8 pt-4 flex-1 flex flex-col">
                         <h3 class="text-2xl font-bold font-serif mb-2">Zrinjevac Park</h3>
@@ -168,17 +198,17 @@
                             <a href="https://maps.app.goo.gl/sGzL2LftrdvPvM1M6" target="_blank" rel="noopener noreferrer" class="bg-gray-100 text-gray-600 px-4 py-3 rounded-xl text-sm font-bold flex-1 flex items-center justify-center gap-2 hover:bg-gray-200 transition">
                                 <i data-lucide="map" width="16"></i> Maps
                             </a>
-                            <button onclick="addToRoute(1)" class="bg-brand-red text-white px-4 py-3 rounded-xl text-sm font-bold w-24 hover:bg-brand-dark transition shadow-lg shadow-red-900/20">
+                            <button onclick="addToRoute(1)" class="bg-brand-red text-white px-4 py-3 rounded-xl text-sm font-bold w-24 hover:bg-brand-forest transition shadow-lg shadow-red-900/20">
                                 Add
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-[2.5rem] border border-gray-100 shadow-card overflow-hidden hover:shadow-2xl transition-all duration-300 group flex flex-col h-full">
+                <div class="reveal-on-scroll delay-200 bg-white rounded-[2.5rem] border border-gray-100 shadow-card overflow-hidden hover:shadow-2xl transition-all duration-300 group flex flex-col h-full">
                     <div class="h-64 overflow-hidden relative p-2">
                         <img src="assets/card_trg.png" class="w-full h-full object-cover rounded-[2rem] group-hover:scale-105 transition-transform duration-700" alt="Trg Bana Jelačića">
-                        <span class="absolute top-6 right-6 bg-brand-coral text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide shadow-sm">Main Event</span>
+                        <span class="absolute top-6 right-6 bg-brand-gold text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide shadow-sm">Main Event</span>
                     </div>
                     <div class="px-8 pb-8 pt-4 flex-1 flex flex-col">
                         <h3 class="text-2xl font-bold font-serif mb-2">Trg Bana Jelačića</h3>
@@ -193,17 +223,17 @@
                             <a href="https://maps.app.goo.gl/rUQTLPBpKqNSgNvN9" target="_blank" rel="noopener noreferrer" class="bg-gray-100 text-gray-600 px-4 py-3 rounded-xl text-sm font-bold flex-1 flex items-center justify-center gap-2 hover:bg-gray-200 transition">
                                 <i data-lucide="map" width="16"></i> Maps
                             </a>
-                            <button onclick="addToRoute(2)" class="bg-brand-red text-white px-4 py-3 rounded-xl text-sm font-bold w-24 hover:bg-brand-dark transition shadow-lg shadow-red-900/20">
+                            <button onclick="addToRoute(2)" class="bg-brand-red text-white px-4 py-3 rounded-xl text-sm font-bold w-24 hover:bg-brand-forest transition shadow-lg shadow-red-900/20">
                                 Add
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-[2.5rem] border border-gray-100 shadow-card overflow-hidden hover:shadow-2xl transition-all duration-300 group flex flex-col h-full">
+                <div class="reveal-on-scroll delay-300 bg-white rounded-[2.5rem] border border-gray-100 shadow-card overflow-hidden hover:shadow-2xl transition-all duration-300 group flex flex-col h-full">
                     <div class="h-64 overflow-hidden relative p-2">
                         <img src="assets/card_ice.png" class="w-full h-full object-cover rounded-[2rem] group-hover:scale-105 transition-transform duration-700" alt="Ice Park">
-                        <span class="absolute top-6 right-6 bg-brand-coral text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide shadow-sm">Activity</span>
+                        <span class="absolute top-6 right-6 bg-brand-gold text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide shadow-sm">Activity</span>
                     </div>
                     <div class="px-8 pb-8 pt-4 flex-1 flex flex-col">
                         <h3 class="text-2xl font-bold font-serif mb-2">Ice Park Tomislavac</h3>
@@ -218,7 +248,7 @@
                             <a href="https://maps.app.goo.gl/wzFYVxWDFsXWL1xN8" target="_blank" rel="noopener noreferrer" class="bg-gray-100 text-gray-600 px-4 py-3 rounded-xl text-sm font-bold flex-1 flex items-center justify-center gap-2 hover:bg-gray-200 transition">
                                 <i data-lucide="map" width="16"></i> Maps
                             </a>
-                            <button onclick="addToRoute(3)" class="bg-brand-red text-white px-4 py-3 rounded-xl text-sm font-bold w-24 hover:bg-brand-dark transition shadow-lg shadow-red-900/20">
+                            <button onclick="addToRoute(3)" class="bg-brand-red text-white px-4 py-3 rounded-xl text-sm font-bold w-24 hover:bg-brand-forest transition shadow-lg shadow-red-900/20">
                                 Add
                             </button>
                         </div>
@@ -249,9 +279,9 @@
                 <div class="md:text-right">
                      <h4 class="font-sans font-bold text-sm tracking-widest mb-6 uppercase opacity-80">Social Media</h4>
                      <div class="flex md:justify-end gap-4">
-                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-brand-red transition-all"><i data-lucide="instagram" width="20"></i></a>
-                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-brand-red transition-all"><i data-lucide="facebook" width="20"></i></a>
-                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-brand-red transition-all"><i data-lucide="music" width="20"></i></a> </div>
+                        <a href="#" class="w-10 h-10 bg-brand-snow/10 rounded-full flex items-center justify-center hover:bg-brand-snow hover:text-brand-red transition-all"><i data-lucide="instagram" width="20"></i></a>
+                        <a href="#" class="w-10 h-10 bg-brand-snow/10 rounded-full flex items-center justify-center hover:bg-brand-snow hover:text-brand-red transition-all"><i data-lucide="facebook" width="20"></i></a>
+                     </div>
                 </div>
             </div>
 
@@ -261,17 +291,17 @@
                     <a href="#" class="hover:text-white transition-colors">Cookie Policy</a>
                     <a href="#" class="hover:text-white transition-colors">Privacy</a>
                 </div>
-                <p>&copy; 2025 Advent Zagreb.</p>
+                <p>© 2025 Advent Zagreb.</p>
             </div>
         </div>
     </footer>
 
     <div id="toast-notification" class="fixed bottom-8 right-8 z-[110] bg-white border border-gray-100 shadow-2xl rounded-2xl p-4 flex items-center gap-4 min-w-[300px] transform translate-x-[150%] transition-transform duration-500 ease-in-out">
-        <div class="bg-green-100 p-2 rounded-full text-green-600">
+        <div class="bg-brand-green/10 p-2 rounded-full text-brand-green">
             <i data-lucide="check" width="20"></i>
         </div>
         <div class="flex-1">
-            <h4 id="toast-title" class="font-bold text-gray-900 text-sm">Success</h4>
+            <h4 id="toast-title" class="font-bold text-brand-charcoal text-sm">Success</h4>
             <p id="toast-message" class="text-xs text-gray-500">Location added to route.</p>
         </div>
         <button onclick="hideToast()" class="text-gray-400 hover:text-gray-600">

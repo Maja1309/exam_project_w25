@@ -256,3 +256,79 @@ function toggleSound() {
     }
     lucide.createIcons();
 }
+
+const observerOptions = {
+    threshold: 0.15, // Trigger when 15% of the item is visible
+    rootMargin: "0px 0px -50px 0px" // Offset slightly so it triggers before bottom
+};
+
+const scrollObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            
+            // If this element has a counter, start counting!
+            if (entry.target.hasAttribute('data-count')) {
+                startCounter(entry.target);
+            }
+            
+            // Stop watching once revealed (so it doesn't flash again)
+            scrollObserver.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+// Initialize on load
+document.addEventListener('DOMContentLoaded', () => {
+    const revealElements = document.querySelectorAll('.reveal-on-scroll');
+    revealElements.forEach(el => scrollObserver.observe(el));
+    
+    // Initialize Countdown
+    startCountdown();
+});
+
+// B. NUMBER COUNTER ANIMATION
+function startCounter(el) {
+    const target = parseInt(el.getAttribute('data-target'));
+    const suffix = el.getAttribute('data-suffix') || ""; // e.g., "+" or "x"
+    const duration = 2000; // 2 seconds to finish
+    const stepTime = 20; // Update every 20ms
+    const steps = duration / stepTime;
+    const increment = target / steps;
+    
+    let current = 0;
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            el.innerText = target + suffix;
+            clearInterval(timer);
+        } else {
+            el.innerText = Math.ceil(current) + suffix;
+        }
+    }, stepTime);
+}
+
+function startCountdown() {
+    const countdownEl = document.getElementById('advent-countdown');
+    if (!countdownEl) return;
+
+    const targetDate = new Date("Dec 24, 2025 00:00:00").getTime();
+
+    setInterval(() => {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        if (distance < 0) {
+            countdownEl.innerHTML = "MERRY CHRISTMAS!";
+            return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+        document.getElementById('cd-days').innerText = days;
+        document.getElementById('cd-hours').innerText = hours;
+        document.getElementById('cd-min').innerText = minutes;
+    }, 1000);
+}

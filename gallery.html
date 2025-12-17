@@ -12,17 +12,25 @@
                 extend: {
                     colors: {
                         brand: {
-                            red: '#b91c1c',     
-                            coral: '#fb7185',   
-                            dark: '#7f1d1d',    
+                            red: '#B11226',
+                            bright: '#D62828',
+                            gold: '#C9A24D',
+                            champagne: '#E6C87A',
+                            green: '#1F5C4A',
+                            forest: '#123B2A',
+                            snow: '#FAFAF8',
+                            cream: '#F4EFEA',
+                            charcoal: '#2B2B2B',
+                            coral: '#C9A24D',
+                            dark: '#123B2A',
                         }
                     },
                     fontFamily: {
                         serif: ['Playfair Display', 'serif'],
-                        sans: ['Inter', 'sans-serif'],
+                        sans: ['Playfair Display', 'serif'], 
                     },
                     boxShadow: {
-                        'card': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                        'card': '0 10px 40px -10px rgba(43, 43, 43, 0.08)', 
                     }
                 }
             }
@@ -31,24 +39,25 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-white text-gray-900 flex flex-col min-h-screen">
+<body class="bg-brand-snow text-brand-charcoal flex flex-col min-h-screen">
     
     <div id="snow-container" class="fixed inset-0 pointer-events-none z-50 overflow-hidden"></div>
 
-    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-sm transition-all duration-300 border-b border-gray-100">
+    <nav class="fixed w-full z-50 bg-brand-snow/95 backdrop-blur-md shadow-sm transition-all duration-300 border-b border-brand-gold/20">
         <div class="max-w-[1600px] mx-auto px-6 h-24 flex items-center justify-between">
             <a href="index.html" class="flex items-center gap-3 group">
                 <div class="bg-brand-red p-2 rounded-lg shadow-md transition-transform group-hover:scale-105">
                     <i data-lucide="snowflake" class="text-white w-6 h-6"></i>
                 </div>
-                <span class="text-2xl font-serif font-bold text-brand-red tracking-tight">Advent<span class="text-gray-900">Zagreb</span></span>
+                <span class="text-2xl font-serif font-bold text-brand-red tracking-tight">Advent<span class="text-brand-charcoal">Zagreb</span></span>
             </a>
+            
             <div class="hidden md:flex items-center gap-10 font-serif font-bold text-lg">
                 <a href="index.html" class="text-gray-400 hover:text-brand-red transition-colors">Home</a>
                 <a href="gallery.html" class="text-brand-red">Gallery</a>
-                <a href="route.html" class="bg-gray-100 text-gray-800 px-6 py-2 rounded-full hover:bg-brand-red hover:text-white transition-all text-base flex items-center gap-2">
-                My Route 
-                <span id="nav-badge" class="hidden bg-brand-red text-white text-[10px] font-bold px-2 py-0.5 rounded-full border border-white/20">0</span>
+                <a href="route.html" class="bg-brand-cream text-brand-charcoal px-6 py-2 rounded-full hover:bg-brand-red hover:text-white transition-all text-base flex items-center gap-2">
+                    My Route 
+                    <span id="nav-badge" class="hidden bg-white text-brand-red text-[12px] font-bold px-2 py-0.5 rounded-full border-2 border-brand-red ml-2 shadow-sm">0</span>
                 </a>
             </div>
         </div>
@@ -60,15 +69,15 @@
 
     <main class="max-w-[1400px] mx-auto px-6 py-20">
         <div class="text-center mb-16 space-y-4">
-            <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-900 uppercase tracking-tight">Discover Locations</h2>
+            <h2 class="text-4xl md:text-5xl font-serif font-bold text-brand-charcoal uppercase tracking-tight">Discover Locations</h2>
             <p class="text-gray-500 text-lg font-light">Select the places you want to visit and add them to your planner.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="bg-white rounded-[2.5rem] border border-gray-100 shadow-card overflow-hidden hover:shadow-2xl transition-all duration-300 group flex flex-col h-full">
+            <div class="reveal-on-scroll delay-100 bg-white rounded-[2.5rem] border border-gray-100 shadow-card overflow-hidden hover:shadow-2xl transition-all duration-300 group flex flex-col h-full">
                 <div class="h-64 overflow-hidden relative p-2">
                     <img src="assets/card_zrinjevac.png" class="w-full h-full object-cover rounded-[2rem] group-hover:scale-105 transition-transform duration-700" alt="Zrinjevac">
-                    <span class="absolute top-6 right-6 bg-brand-coral text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide shadow-sm">Atmosphere</span>
+                    <span class="absolute top-6 right-6 bg-brand-gold text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide shadow-sm">Atmosphere</span>
                 </div>
                 <div class="px-8 pb-8 pt-4 flex-1 flex flex-col">
                     <h3 class="text-2xl font-bold font-serif mb-2">Zrinjevac Park</h3>
@@ -78,16 +87,16 @@
                         <span class="flex items-center gap-1.5"><i data-lucide="euro" class="text-brand-red" width="14"></i> ~10 EUR</span>
                     </div>
                     <div class="flex gap-3">
-                        <button onclick="openModal(1)" class="bg-gray-100 text-gray-600 px-4 py-3 rounded-xl text-sm font-bold flex-1 hover:bg-gray-200 transition">See More</button>
-                        <button onclick="addToRoute(1)" class="bg-brand-red text-white px-4 py-3 rounded-xl text-sm font-bold w-24 hover:bg-brand-dark transition shadow-lg">Add</button>
+                        <button onclick="openModal(1)" class="bg-brand-cream text-brand-charcoal px-4 py-3 rounded-xl text-sm font-bold flex-1 hover:bg-gray-200 transition">See More</button>
+                        <button onclick="addToRoute(1)" class="bg-brand-red text-white px-4 py-3 rounded-xl text-sm font-bold w-24 hover:bg-brand-forest transition shadow-lg">Add</button>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-white rounded-[2.5rem] border border-gray-100 shadow-card overflow-hidden hover:shadow-2xl transition-all duration-300 group flex flex-col h-full">
+            <div class="reveal-on-scroll delay-200 bg-white rounded-[2.5rem] border border-gray-100 shadow-card overflow-hidden hover:shadow-2xl transition-all duration-300 group flex flex-col h-full">
                 <div class="h-64 overflow-hidden relative p-2">
                     <img src="assets/card_trg.png" class="w-full h-full object-cover rounded-[2rem] group-hover:scale-105 transition-transform duration-700" alt="Trg">
-                    <span class="absolute top-6 right-6 bg-brand-coral text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide shadow-sm">Main Event</span>
+                    <span class="absolute top-6 right-6 bg-brand-gold text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide shadow-sm">Main Event</span>
                 </div>
                 <div class="px-8 pb-8 pt-4 flex-1 flex flex-col">
                     <h3 class="text-2xl font-bold font-serif mb-2">Trg Bana Jelačića</h3>
@@ -97,16 +106,16 @@
                         <span class="flex items-center gap-1.5"><i data-lucide="euro" class="text-brand-red" width="14"></i> ~15 EUR</span>
                     </div>
                     <div class="flex gap-3">
-                        <button onclick="openModal(2)" class="bg-gray-100 text-gray-600 px-4 py-3 rounded-xl text-sm font-bold flex-1 hover:bg-gray-200 transition">See More</button>
-                        <button onclick="addToRoute(2)" class="bg-brand-red text-white px-4 py-3 rounded-xl text-sm font-bold w-24 hover:bg-brand-dark transition shadow-lg">Add</button>
+                        <button onclick="openModal(2)" class="bg-brand-cream text-brand-charcoal px-4 py-3 rounded-xl text-sm font-bold flex-1 hover:bg-gray-200 transition">See More</button>
+                        <button onclick="addToRoute(2)" class="bg-brand-red text-white px-4 py-3 rounded-xl text-sm font-bold w-24 hover:bg-brand-forest transition shadow-lg">Add</button>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-white rounded-[2.5rem] border border-gray-100 shadow-card overflow-hidden hover:shadow-2xl transition-all duration-300 group flex flex-col h-full">
+            <div class="reveal-on-scroll delay-300 bg-white rounded-[2.5rem] border border-gray-100 shadow-card overflow-hidden hover:shadow-2xl transition-all duration-300 group flex flex-col h-full">
                 <div class="h-64 overflow-hidden relative p-2">
                     <img src="assets/card_ice.png" class="w-full h-full object-cover rounded-[2rem] group-hover:scale-105 transition-transform duration-700" alt="Ice Park">
-                    <span class="absolute top-6 right-6 bg-brand-coral text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide shadow-sm">Activity</span>
+                    <span class="absolute top-6 right-6 bg-brand-gold text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide shadow-sm">Activity</span>
                 </div>
                 <div class="px-8 pb-8 pt-4 flex-1 flex flex-col">
                     <h3 class="text-2xl font-bold font-serif mb-2">Ice Park Tomislavac</h3>
@@ -116,16 +125,16 @@
                         <span class="flex items-center gap-1.5"><i data-lucide="euro" class="text-brand-red" width="14"></i> ~25 EUR</span>
                     </div>
                     <div class="flex gap-3">
-                        <button onclick="openModal(3)" class="bg-gray-100 text-gray-600 px-4 py-3 rounded-xl text-sm font-bold flex-1 hover:bg-gray-200 transition">See More</button>
-                        <button onclick="addToRoute(3)" class="bg-brand-red text-white px-4 py-3 rounded-xl text-sm font-bold w-24 hover:bg-brand-dark transition shadow-lg">Add</button>
+                        <button onclick="openModal(3)" class="bg-brand-cream text-brand-charcoal px-4 py-3 rounded-xl text-sm font-bold flex-1 hover:bg-gray-200 transition">See More</button>
+                        <button onclick="addToRoute(3)" class="bg-brand-red text-white px-4 py-3 rounded-xl text-sm font-bold w-24 hover:bg-brand-forest transition shadow-lg">Add</button>
                     </div>
                 </div>
             </div>
 
-             <div class="bg-white rounded-[2.5rem] border border-gray-100 shadow-card overflow-hidden hover:shadow-2xl transition-all duration-300 group flex flex-col h-full">
+             <div class="reveal-on-scroll delay-100 bg-white rounded-[2.5rem] border border-gray-100 shadow-card overflow-hidden hover:shadow-2xl transition-all duration-300 group flex flex-col h-full">
                 <div class="h-64 overflow-hidden relative p-2">
                     <img src="assets/card_upper.png" class="w-full h-full object-cover rounded-[2rem] group-hover:scale-105 transition-transform duration-700" alt="Upper Town">
-                    <span class="absolute top-6 right-6 bg-brand-coral text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide shadow-sm">Sightseeing</span>
+                    <span class="absolute top-6 right-6 bg-brand-gold text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide shadow-sm">Sightseeing</span>
                 </div>
                 <div class="px-8 pb-8 pt-4 flex-1 flex flex-col">
                     <h3 class="text-2xl font-bold font-serif mb-2">Upper Town</h3>
@@ -135,16 +144,16 @@
                         <span class="flex items-center gap-1.5"><i data-lucide="euro" class="text-brand-red" width="14"></i> ~12 EUR</span>
                     </div>
                     <div class="flex gap-3">
-                        <button onclick="openModal(4)" class="bg-gray-100 text-gray-600 px-4 py-3 rounded-xl text-sm font-bold flex-1 hover:bg-gray-200 transition">See More</button>
-                        <button onclick="addToRoute(4)" class="bg-brand-red text-white px-4 py-3 rounded-xl text-sm font-bold w-24 hover:bg-brand-dark transition shadow-lg">Add</button>
+                        <button onclick="openModal(4)" class="bg-brand-cream text-brand-charcoal px-4 py-3 rounded-xl text-sm font-bold flex-1 hover:bg-gray-200 transition">See More</button>
+                        <button onclick="addToRoute(4)" class="bg-brand-red text-white px-4 py-3 rounded-xl text-sm font-bold w-24 hover:bg-brand-forest transition shadow-lg">Add</button>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-white rounded-[2.5rem] border border-gray-100 shadow-card overflow-hidden hover:shadow-2xl transition-all duration-300 group flex flex-col h-full">
+            <div class="reveal-on-scroll delay-200 bg-white rounded-[2.5rem] border border-gray-100 shadow-card overflow-hidden hover:shadow-2xl transition-all duration-300 group flex flex-col h-full">
                 <div class="h-64 overflow-hidden relative p-2">
                     <img src="assets/card_fuliranje.png" class="w-full h-full object-cover rounded-[2rem] group-hover:scale-105 transition-transform duration-700" alt="Fuliranje">
-                    <span class="absolute top-6 right-6 bg-brand-coral text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide shadow-sm">Food & Drink</span>
+                    <span class="absolute top-6 right-6 bg-brand-gold text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide shadow-sm">Food & Drink</span>
                 </div>
                 <div class="px-8 pb-8 pt-4 flex-1 flex flex-col">
                     <h3 class="text-2xl font-bold font-serif mb-2">Fuliranje</h3>
@@ -154,16 +163,16 @@
                         <span class="flex items-center gap-1.5"><i data-lucide="euro" class="text-brand-red" width="14"></i> ~30 EUR</span>
                     </div>
                     <div class="flex gap-3">
-                        <button onclick="openModal(5)" class="bg-gray-100 text-gray-600 px-4 py-3 rounded-xl text-sm font-bold flex-1 hover:bg-gray-200 transition">See More</button>
-                        <button onclick="addToRoute(5)" class="bg-brand-red text-white px-4 py-3 rounded-xl text-sm font-bold w-24 hover:bg-brand-dark transition shadow-lg">Add</button>
+                        <button onclick="openModal(5)" class="bg-brand-cream text-brand-charcoal px-4 py-3 rounded-xl text-sm font-bold flex-1 hover:bg-gray-200 transition">See More</button>
+                        <button onclick="addToRoute(5)" class="bg-brand-red text-white px-4 py-3 rounded-xl text-sm font-bold w-24 hover:bg-brand-forest transition shadow-lg">Add</button>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-white rounded-[2.5rem] border border-gray-100 shadow-card overflow-hidden hover:shadow-2xl transition-all duration-300 group flex flex-col h-full">
+            <div class="reveal-on-scroll delay-300 bg-white rounded-[2.5rem] border border-gray-100 shadow-card overflow-hidden hover:shadow-2xl transition-all duration-300 group flex flex-col h-full">
                 <div class="h-64 overflow-hidden relative p-2">
                     <img src="assets/card_tunnel.png" class="w-full h-full object-cover rounded-[2rem] group-hover:scale-105 transition-transform duration-700" alt="Tunel Grič">
-                    <span class="absolute top-6 right-6 bg-brand-coral text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide shadow-sm">Experience</span>
+                    <span class="absolute top-6 right-6 bg-brand-gold text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide shadow-sm">Experience</span>
                 </div>
                 <div class="px-8 pb-8 pt-4 flex-1 flex flex-col">
                     <h3 class="text-2xl font-bold font-serif mb-2">Tunel Grič</h3>
@@ -173,8 +182,8 @@
                         <span class="flex items-center gap-1.5"><i data-lucide="euro" class="text-brand-red" width="14"></i> Free</span>
                     </div>
                     <div class="flex gap-3">
-                        <button onclick="openModal(6)" class="bg-gray-100 text-gray-600 px-4 py-3 rounded-xl text-sm font-bold flex-1 hover:bg-gray-200 transition">See More</button>
-                        <button onclick="addToRoute(6)" class="bg-brand-red text-white px-4 py-3 rounded-xl text-sm font-bold w-24 hover:bg-brand-dark transition shadow-lg">Add</button>
+                        <button onclick="openModal(6)" class="bg-brand-cream text-brand-charcoal px-4 py-3 rounded-xl text-sm font-bold flex-1 hover:bg-gray-200 transition">See More</button>
+                        <button onclick="addToRoute(6)" class="bg-brand-red text-white px-4 py-3 rounded-xl text-sm font-bold w-24 hover:bg-brand-forest transition shadow-lg">Add</button>
                     </div>
                 </div>
             </div>
@@ -199,8 +208,8 @@
                 <div class="md:text-right">
                      <h4 class="font-sans font-bold text-sm tracking-widest mb-6 uppercase opacity-80">Social Media</h4>
                      <div class="flex md:justify-end gap-4">
-                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-brand-red transition-all"><i data-lucide="instagram" width="20"></i></a>
-                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-brand-red transition-all"><i data-lucide="facebook" width="20"></i></a>
+                        <a href="#" class="w-10 h-10 bg-brand-snow/10 rounded-full flex items-center justify-center hover:bg-brand-snow hover:text-brand-red transition-all"><i data-lucide="instagram" width="20"></i></a>
+                        <a href="#" class="w-10 h-10 bg-brand-snow/10 rounded-full flex items-center justify-center hover:bg-brand-snow hover:text-brand-red transition-all"><i data-lucide="facebook" width="20"></i></a>
                      </div>
                 </div>
             </div>
@@ -215,30 +224,30 @@
     </footer>
 
     <div id="details-modal" class="fixed inset-0 z-[100] hidden items-center justify-center">
-        <div class="absolute inset-0 bg-black/70 backdrop-blur-md" onclick="closeModal()"></div>
+        <div class="absolute inset-0 bg-brand-charcoal/70 backdrop-blur-md" onclick="closeModal()"></div>
         
         <div class="relative z-10 w-[90%] md:w-[80%] max-w-[1100px] max-h-[90vh] bg-white rounded-[2.5rem] shadow-2xl overflow-hidden animate-fadeIn flex flex-col md:flex-row">
             
-            <button onclick="closeModal()" class="absolute top-4 right-4 z-20 bg-white/20 hover:bg-white/40 text-white md:text-gray-500 md:bg-gray-100 md:hover:bg-gray-200 p-2 rounded-full transition">
+            <button onclick="closeModal()" class="absolute top-4 right-4 z-20 bg-brand-snow/20 hover:bg-brand-snow/40 text-white md:text-gray-500 md:bg-gray-100 md:hover:bg-gray-200 p-2 rounded-full transition">
                 <i data-lucide="x" width="24"></i>
             </button>
 
             <div class="h-64 md:h-auto md:w-1/2 relative">
                 <img id="modal-image" src="" alt="Detail" class="w-full h-full object-cover">
-                <span id="modal-category" class="absolute top-8 left-8 bg-brand-coral text-white px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wide shadow-md">
+                <span id="modal-category" class="absolute top-8 left-8 bg-brand-gold text-white px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wide shadow-md">
                     Category
                 </span>
             </div>
 
             <div class="md:w-1/2 p-8 md:p-12 overflow-y-auto">
-                <h2 id="modal-title" class="text-4xl md:text-5xl font-serif font-bold mb-2 text-gray-900">Title</h2>
+                <h2 id="modal-title" class="text-4xl md:text-5xl font-serif font-bold mb-2 text-brand-charcoal">Title</h2>
                 <h4 id="modal-subtitle" class="text-xl text-brand-red font-serif italic mb-6">Subtitle</h4>
                 
                 <p id="modal-desc" class="text-gray-600 text-base md:text-lg leading-relaxed mb-8">
                     Description goes here...
                 </p>
                 
-                <div class="flex items-center gap-8 text-sm md:text-base font-bold text-gray-600 mb-10 bg-gray-50 p-6 rounded-2xl">
+                <div class="flex items-center gap-8 text-sm md:text-base font-bold text-gray-600 mb-10 bg-brand-cream p-6 rounded-2xl">
                     <span class="flex items-center gap-2"><i data-lucide="clock" class="text-brand-red" width="20"></i> <span id="modal-time">60 min</span></span>
                     <span class="flex items-center gap-2"><i data-lucide="euro" class="text-brand-red" width="20"></i> <span id="modal-cost">10 EUR</span></span>
                 </div>
@@ -247,7 +256,7 @@
                     <a id="modal-map-btn" href="#" target="_blank" class="bg-gray-100 text-gray-700 px-6 py-4 rounded-xl font-bold flex-1 flex items-center justify-center gap-2 hover:bg-gray-200 transition text-base">
                         <i data-lucide="map" width="18"></i> Google Maps
                     </a>
-                    <button id="modal-add-btn" class="bg-brand-red text-white px-6 py-4 rounded-xl font-bold flex-1 hover:bg-brand-dark transition shadow-lg text-base">
+                    <button id="modal-add-btn" class="bg-brand-red text-white px-6 py-4 rounded-xl font-bold flex-1 hover:bg-brand-forest transition shadow-lg text-base">
                         Add to Route
                     </button>
                 </div>
@@ -256,11 +265,11 @@
     </div>
 
     <div id="toast-notification" class="fixed bottom-8 right-8 z-[110] bg-white border border-gray-100 shadow-2xl rounded-2xl p-4 flex items-center gap-4 min-w-[300px] transform translate-x-[150%] transition-transform duration-500 ease-in-out">
-        <div class="bg-green-100 p-2 rounded-full text-green-600">
+        <div class="bg-brand-green/10 p-2 rounded-full text-brand-green">
             <i data-lucide="check" width="20"></i>
         </div>
         <div class="flex-1">
-            <h4 id="toast-title" class="font-bold text-gray-900 text-sm">Success</h4>
+            <h4 id="toast-title" class="font-bold text-brand-charcoal text-sm">Success</h4>
             <p id="toast-message" class="text-xs text-gray-500">Location added to route.</p>
         </div>
         <button onclick="hideToast()" class="text-gray-400 hover:text-gray-600">

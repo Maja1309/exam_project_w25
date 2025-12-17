@@ -12,17 +12,25 @@
                 extend: {
                     colors: {
                         brand: {
-                            red: '#b91c1c',     
-                            coral: '#fb7185',   
-                            dark: '#7f1d1d',    
+                            red: '#B11226',      
+                            bright: '#D62828',  
+                            gold: '#C9A24D',     
+                            champagne: '#E6C87A',
+                            green: '#1F5C4A',    
+                            forest: '#123B2A',   
+                            snow: '#FAFAF8',     
+                            cream: '#F4EFEA',    
+                            charcoal: '#2B2B2B', 
+                            coral: '#C9A24D',    
+                            dark: '#123B2A',     
                         }
                     },
                     fontFamily: {
                         serif: ['Playfair Display', 'serif'],
-                        sans: ['Inter', 'sans-serif'],
+                        sans: ['Playfair Display', 'serif'], 
                     },
                     boxShadow: {
-                        'card': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                        'card': '0 10px 40px -10px rgba(43, 43, 43, 0.08)', 
                     }
                 }
             }
@@ -31,17 +39,17 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-50 text-gray-900 flex flex-col min-h-screen">
+<body class="bg-brand-snow text-brand-charcoal flex flex-col min-h-screen">
     
     <div id="snow-container" class="fixed inset-0 pointer-events-none z-50 overflow-hidden"></div>
 
-    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-sm transition-all duration-300 border-b border-gray-100">
+    <nav class="fixed w-full z-50 bg-brand-snow/95 backdrop-blur-md shadow-sm transition-all duration-300 border-b border-brand-gold/20">
         <div class="max-w-[1600px] mx-auto px-6 h-24 flex items-center justify-between">
             <a href="index.html" class="flex items-center gap-3 group">
                 <div class="bg-brand-red p-2 rounded-lg shadow-md transition-transform group-hover:scale-105">
                     <i data-lucide="snowflake" class="text-white w-6 h-6"></i>
                 </div>
-                <span class="text-2xl font-serif font-bold text-brand-red tracking-tight">Advent<span class="text-gray-900">Zagreb</span></span>
+                <span class="text-2xl font-serif font-bold text-brand-red tracking-tight">Advent<span class="text-brand-charcoal">Zagreb</span></span>
             </a>
             
             <div class="hidden md:flex items-center gap-10 font-serif font-bold text-lg">
@@ -49,9 +57,9 @@
                 <a href="gallery.html" class="text-gray-400 hover:text-brand-red transition-colors">Gallery</a>
                 <a href="route.html" class="text-brand-red flex items-center gap-2">
                     My Route
-                    <span id="nav-badge" class="hidden bg-brand-red text-white text-[10px] font-bold px-2 py-0.5 rounded-full">0</span>
+                    <span id="nav-badge" class="hidden bg-brand-gold text-brand-red text-[12px] font-bold px-2 py-0.5 rounded-full ml-2 shadow-sm">0</span>                
                 </a>
-                </div>
+            </div>
         </div>
     </nav>
 
@@ -60,7 +68,7 @@
     </header>
 
     <main class="max-w-[1400px] mx-auto px-6 py-16">
-        <h2 class="text-4xl font-serif font-bold text-gray-900 mb-8 uppercase tracking-tight">Your Route Plan</h2>
+        <h2 class="text-4xl font-serif font-bold text-brand-charcoal mb-8 uppercase tracking-tight">Your Route Plan</h2>
 
         <div class="grid lg:grid-cols-12 gap-8">
             
@@ -70,7 +78,7 @@
                     
                     <div class="mb-10">
                         <div class="flex justify-between mb-4 items-end">
-                            <label class="font-bold text-gray-700 text-lg flex items-center gap-2">
+                            <label class="font-bold text-brand-charcoal text-lg flex items-center gap-2">
                                 <i data-lucide="euro" width="20"></i> Budget
                             </label>
                             <span id="budget-value" class="text-brand-red font-bold text-2xl">50 €</span>
@@ -87,35 +95,35 @@
 
                     <div class="mb-10">
                         <div class="flex justify-between mb-4 items-end">
-                            <label class="font-bold text-gray-700 text-lg flex items-center gap-2">
+                            <label class="font-bold text-brand-charcoal text-lg flex items-center gap-2">
                                 <i data-lucide="clock" width="20"></i> Time Available
                             </label>
-                            <span id="time-value" class="text-coral-600 font-bold text-2xl">3h 0m</span>
+                            <span id="time-value" class="text-brand-gold font-bold text-2xl">3h 0m</span>
                         </div>
                         <input 
                             type="range" id="time-slider" min="30" max="480" step="30" value="180" 
-                            class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer bg-brand-coral"
+                            class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-brand-gold"
                         >
                     </div>
 
                     <hr class="border-gray-100 my-8"/>
 
                     <div class="grid grid-cols-2 gap-4">
-                        <div id="total-cost-box" class="p-4 rounded-2xl bg-gray-50 border border-gray-100 transition-colors">
+                        <div id="total-cost-box" class="p-4 rounded-2xl bg-brand-snow border border-gray-100 transition-colors">
                             <span class="text-xs uppercase text-gray-500 font-bold block mb-1 tracking-wider">Total Cost</span>
-                            <div id="total-cost" class="text-3xl font-bold text-gray-800">0 €</div>
+                            <div id="total-cost" class="text-3xl font-bold text-brand-charcoal">0 €</div>
                         </div>
                         
-                        <div id="total-time-box" class="p-4 rounded-2xl bg-gray-50 border border-gray-100 transition-colors">
+                        <div id="total-time-box" class="p-4 rounded-2xl bg-brand-snow border border-gray-100 transition-colors">
                             <span class="text-xs uppercase text-gray-500 font-bold block mb-1 tracking-wider">Duration</span>
-                            <div id="total-time" class="text-3xl font-bold text-gray-800">0h 0m</div>
+                            <div id="total-time" class="text-3xl font-bold text-brand-charcoal">0h 0m</div>
                         </div>
                     </div>
 
-                    <div id="budget-warning" class="hidden mt-4 p-3 bg-red-100 text-red-700 text-xs font-bold rounded-xl flex items-center gap-2">
+                    <div id="budget-warning" class="hidden mt-4 p-3 bg-red-50 text-brand-red text-xs font-bold rounded-xl flex items-center gap-2">
                         <i data-lucide="alert-circle" width="16"></i> Over Budget!
                     </div>
-                    <div id="time-warning" class="hidden mt-2 p-3 bg-red-100 text-red-700 text-xs font-bold rounded-xl flex items-center gap-2">
+                    <div id="time-warning" class="hidden mt-2 p-3 bg-red-50 text-brand-red text-xs font-bold rounded-xl flex items-center gap-2">
                         <i data-lucide="alert-circle" width="16"></i> Not enough time!
                     </div>
 
@@ -126,7 +134,7 @@
                 <div class="bg-white rounded-3xl shadow-card border border-gray-100 overflow-hidden min-h-[600px]">
                     <div class="bg-brand-red p-6 flex justify-between items-center">
                         <h3 class="font-bold text-white text-xl">Detailed Itinerary</h3>
-                        <span id="location-count" class="bg-white px-4 py-1.5 rounded-full text-xs font-bold text-gray-900 shadow-sm">
+                        <span id="location-count" class="bg-white px-4 py-1.5 rounded-full text-xs font-bold text-brand-charcoal shadow-sm">
                             0 Locations
                         </span>
                     </div>
@@ -171,12 +179,12 @@
         </div>
     </footer>
 
-<div id="toast-notification" class="fixed bottom-8 right-8 z-[110] bg-white border border-gray-100 shadow-2xl rounded-2xl p-4 flex items-center gap-4 min-w-[300px] transform translate-x-[150%] transition-transform duration-500 ease-in-out">
-        <div class="bg-green-100 p-2 rounded-full text-green-600">
+    <div id="toast-notification" class="fixed bottom-8 right-8 z-[110] bg-white border border-gray-100 shadow-2xl rounded-2xl p-4 flex items-center gap-4 min-w-[300px] transform translate-x-[150%] transition-transform duration-500 ease-in-out">
+        <div class="bg-brand-green/10 p-2 rounded-full text-brand-green">
             <i data-lucide="check" width="20"></i>
         </div>
         <div class="flex-1">
-            <h4 id="toast-title" class="font-bold text-gray-900 text-sm">Success</h4>
+            <h4 id="toast-title" class="font-bold text-brand-charcoal text-sm">Success</h4>
             <p id="toast-message" class="text-xs text-gray-500">Location added to route.</p>
         </div>
         <button onclick="hideToast()" class="text-gray-400 hover:text-gray-600">
