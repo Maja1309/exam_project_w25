@@ -1,5 +1,7 @@
+
 function createSnowflake() {
     const snowContainer = document.getElementById('snow-container');
+    
     if (!snowContainer) return;
 
     const snowflake = document.createElement('div');
@@ -21,15 +23,23 @@ function createSnowflake() {
 setInterval(createSnowflake, 100);
 
 function toggleSound() {
-    const video = document.getElementById('hero_video');
+    const video = document.getElementById('hero-video');
     const icon = document.getElementById('sound-icon');
+    
+    if (!video || !icon) return;
     
     if (video.muted) {
         video.muted = false;
-        icon.setAttribute('data-lucide', 'volume-2'); 
+        icon.setAttribute('data-lucide', 'volume-2');
+       
     } else {
         video.muted = true;
         icon.setAttribute('data-lucide', 'volume-x');
     }
+    
     lucide.createIcons();
+}
+
+function addToRoute(id) {
+    alert("Added location " + id + " to your route!");
 }

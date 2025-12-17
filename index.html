@@ -6,194 +6,202 @@
     <title>Advent Zagreb</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <script src="https://unpkg.com/lucide@latest"></script>
-
-    <link rel="stylesheet" href="style.css">
-
     <script>
+        // This keeps the styling but hides the "production" warning in console
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
                         brand: {
-                            red: '#b91c1c',     
-                            dark: '#7f1d1d',   
-                            coral: '#f43f5e',   
-                            bg: '#fff1f2'       
+                            red: '#b91c1c',     /* Deep Red */
+                            coral: '#fb7185',   /* Pink/Coral from your screenshot */
+                            dark: '#7f1d1d',    
                         }
                     },
                     fontFamily: {
                         serif: ['Playfair Display', 'serif'],
                         sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'card': '0 10px 40px -10px rgba(0,0,0,0.08)',
                     }
                 }
             }
         }
     </script>
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-white text-gray-900 flex flex-col min-h-screen">
+    <div id="snow-container" class="fixed inset-0 pointer-events-none z-50 overflow-hidden"></div>
 
-    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-sm transition-all duration-300">
-        <div class="max-w-[1400px] mx-auto px-6 h-24 flex items-center justify-between">
-            <a href="index.html" class="flex items-center gap-2 group">
-                <i data-lucide="snowflake" class="text-brand-red w-8 h-8 group-hover:rotate-180 transition-transform duration-700"></i>
-                <span class="text-2xl font-serif font-bold text-brand-red tracking-tight">AdventZagreb</span>
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-sm transition-all duration-300 border-b border-gray-100">
+        <div class="max-w-[1200px] mx-auto px-6 h-24 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="bg-brand-red p-2 rounded-lg shadow-md transition-transform group-hover:scale-105">
+                    <i data-lucide="snowflake" class="text-white w-6 h-6"></i>
+                </div>
+                <span class="text-2xl font-serif font-bold text-brand-red tracking-tight">Advent<span class="text-gray-900">Zagreb</span></span>
             </a>
             
-            <div class="hidden md:flex items-center gap-8 font-serif font-bold text-lg">
+            <div class="hidden md:flex items-center gap-10 font-serif font-bold text-lg">
                 <a href="index.html" class="text-brand-red">Home</a>
-                <a href="gallery.html" class="text-gray-600 hover:text-brand-red transition-colors">Gallery</a>
-                <a href="route.html" class="bg-gray-200 text-gray-800 px-6 py-2 rounded-full hover:bg-brand-red hover:text-white transition-all">My Route</a>
+                <a href="gallery.html" class="text-gray-400 hover:text-brand-red transition-colors">Gallery</a>
+                <a href="route.html" class="bg-gray-100 text-gray-800 px-6 py-2 rounded-full hover:bg-brand-red hover:text-white transition-all text-base">My Route</a>
             </div>
         </div>
     </nav>
 
-    <header class="relative h-screen w-full overflow-hidden">
+    <header class="relative h-[85vh] w-full overflow-hidden mt-24 mx-auto max-w-[1300px] rounded-3xl">
         <video 
             autoplay 
             loop 
             muted 
             playsinline 
-            class="absolute inset-0 w-full h-full object-cover"
+            class="absolute inset-0 w-full h-full object-cover rounded-3xl"
             id="hero-video"
         >
             <source src="assets/hero_video.mp4" type="video/mp4">
         </video>
 
-        <div class="absolute inset-0 bg-black/20 hero-overlay"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 rounded-3xl"></div>
 
-        <div class="absolute inset-0 flex items-center justify-end px-6 max-w-[1400px] mx-auto">
-            <h1 class="text-white font-serif font-bold text-6xl md:text-8xl leading-tight text-right drop-shadow-lg max-w-3xl">
-                ADVENT <br/> ZAGREB
+        <div class="absolute top-1/2 right-12 transform -translate-y-1/2 text-right">
+            <h1 class="text-white font-serif font-bold text-7xl md:text-9xl leading-[0.9] drop-shadow-xl">
+                ADVENT<br/>
+                <span class="italic">ZAGREB</span>
             </h1>
         </div>
 
-        <button onclick="toggleSound()" class="absolute bottom-8 right-8 bg-white/20 backdrop-blur text-white p-3 rounded-full hover:bg-white/40 transition">
-            <i id="sound-icon" data-lucide="volume-x"></i>
-        </button>
+        <button onclick="toggleSound()" class="absolute bottom-8 right-8 z-20 bg-white/20 backdrop-blur-md border border-white/30 text-white p-3 rounded-full hover:bg-white hover:text-brand-red transition-all group">
+    <i id="sound-icon" data-lucide="volume-x" class="w-6 h-6"></i>
+</button>
     </header>
 
-    <main class="max-w-[1400px] mx-auto px-6 py-20 space-y-32">
+    <main class="max-w-[1200px] mx-auto px-6 py-20 space-y-32">
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             
-            <div class="lg:col-span-7 space-y-8">
-                <span class="inline-block bg-rose-300 text-rose-900 px-6 py-2 rounded-full font-bold text-sm tracking-wider uppercase">
+            <div class="space-y-8">
+                <span class="inline-block bg-brand-coral text-white px-6 py-1.5 rounded-full font-bold text-xs tracking-widest uppercase shadow-sm">
                     Welcome
                 </span>
                 <h2 class="text-5xl md:text-6xl font-serif font-bold text-gray-900 leading-[1.1]">
                     The Magic of the <br> festive season.
                 </h2>
-                <p class="text-xl text-gray-600 leading-relaxed max-w-2xl">
+                <p class="text-lg text-gray-500 leading-relaxed font-light">
                     During Advent, Zagreb offers a special atmosphere which must be experienced. The city streets and squares invite you to let your hair down and partake in singing, dancing, and other kinds of entertainment with family and friends.
                 </p>
 
                 <div class="flex gap-6 mt-8">
-                    <div class="bg-white border border-gray-200 p-6 rounded-2xl shadow-sm min-w-[160px]">
-                        <span class="block text-4xl font-bold text-brand-red mb-1">25+</span>
-                        <span class="text-sm font-bold text-gray-800">Unique Locations</span>
+                    <div class="bg-white border border-gray-100 p-6 rounded-2xl shadow-card w-40">
+                        <span class="block text-3xl font-bold text-brand-red mb-1">25+</span>
+                        <span class="text-xs font-bold text-gray-600 uppercase tracking-wide">Unique Locations</span>
                     </div>
-                    <div class="bg-white border border-gray-200 p-6 rounded-2xl shadow-sm min-w-[160px]">
-                        <span class="block text-4xl font-bold text-brand-red mb-1">3x</span>
-                        <span class="text-sm font-bold text-gray-800">Award Winner</span>
+                    <div class="bg-white border border-gray-100 p-6 rounded-2xl shadow-card w-40">
+                        <span class="block text-3xl font-bold text-brand-red mb-1">3x</span>
+                        <span class="text-xs font-bold text-gray-600 uppercase tracking-wide">Award Winner</span>
                     </div>
                 </div>
             </div>
 
-            <div class="lg:col-span-5 relative h-full min-h-[400px]">
-                <div class="bg-brand-red text-white p-12 rounded-[2rem] h-full flex flex-col justify-end shadow-2xl relative overflow-hidden group">
-                    <div class="absolute -top-20 -right-20 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+            <div class="relative h-[500px]">
+                <div class="bg-brand-red text-white p-12 rounded-[2.5rem] h-full flex flex-col justify-end shadow-2xl relative overflow-hidden group hover:scale-[1.02] transition-transform duration-500">
+                    <div class="absolute -top-32 -right-32 w-80 h-80 bg-red-500 rounded-full blur-3xl opacity-50"></div>
                     
-                    <h3 class="text-3xl font-serif font-bold mb-4 relative z-10">Explore the Gallery</h3>
-                    <p class="text-white/80 mb-8 text-lg relative z-10">View all locations and plan your route.</p>
-                    
-                    <a href="gallery.html" class="w-full bg-white/20 backdrop-blur border border-white/40 text-white font-bold py-4 rounded-xl hover:bg-white hover:text-brand-red transition-all text-center flex items-center justify-center gap-2 relative z-10">
-                        Open Gallery
-                    </a>
+                    <div class="relative z-10">
+                        <h3 class="text-4xl font-serif font-bold mb-3">Explore the Gallery</h3>
+                        <p class="text-red-100 mb-8 text-lg font-light">View all locations and plan your route.</p>
+                        
+                        <a href="gallery.html" class="w-full bg-white/20 backdrop-blur-md border border-white/30 text-white font-bold py-4 rounded-xl hover:bg-white hover:text-brand-red transition-all text-center flex items-center justify-center gap-2">
+                            Open Gallery
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div>
-            <div class="flex items-end justify-between mb-12 border-b border-gray-200 pb-6">
+            <div class="flex items-end justify-between mb-12 border-b border-gray-100 pb-6">
                 <h2 class="text-5xl font-serif font-bold text-gray-900">Top Attractions</h2>
-                <a href="gallery.html" class="text-brand-red text-xl font-bold hover:gap-4 transition-all flex items-center gap-2">
-                    View all <i data-lucide="arrow-right"></i>
+                <a href="gallery.html" class="text-brand-red text-xl font-bold hover:gap-4 transition-all flex items-center gap-2 group">
+                    View all <i data-lucide="arrow-right" class="group-hover:translate-x-1 transition-transform"></i>
                 </a>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
-                <div class="bg-white rounded-[2rem] border border-gray-200 overflow-hidden hover:shadow-2xl transition-all duration-300 group">
-                    <div class="h-64 overflow-hidden relative">
-                        <img src="assets/card_zrinjevac.png" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Zrinjevac">
-                        <span class="absolute top-4 right-4 bg-brand-coral text-white px-3 py-1 rounded-full text-xs font-bold uppercase">Atmosphere</span>
+                <div class="bg-white rounded-[2.5rem] border border-gray-100 shadow-card overflow-hidden hover:shadow-2xl transition-all duration-300 group flex flex-col h-full">
+                    <div class="h-64 overflow-hidden relative p-2">
+                        <img src="assets/card_zrinjevac.png" class="w-full h-full object-cover rounded-[2rem] group-hover:scale-105 transition-transform duration-700" alt="Zrinjevac">
+                        <span class="absolute top-6 right-6 bg-brand-coral text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide shadow-sm">Atmosphere</span>
                     </div>
-                    <div class="p-8">
+                    <div class="px-8 pb-8 pt-4 flex-1 flex flex-col">
                         <h3 class="text-2xl font-bold font-serif mb-2">Zrinjevac Park</h3>
-                        <p class="text-gray-500 text-sm mb-6 line-clamp-2">Romantic atmosphere with classical music, thousands of lights and handmade gifts.</p>
+                        <p class="text-gray-400 text-xs mb-6 line-clamp-2 leading-relaxed">Romantic atmosphere with classical music, thousands of lights and handmade gifts.</p>
                         
-                        <div class="flex items-center gap-4 text-sm font-semibold text-gray-400 mb-6">
-                            <span class="flex items-center gap-1"><i data-lucide="clock" width="16"></i> ~60 min</span>
-                            <span class="flex items-center gap-1"><i data-lucide="euro" width="16"></i> ~10 EUR</span>
+                        <div class="flex items-center gap-4 text-xs font-bold text-gray-500 mb-6 mt-auto">
+                            <span class="flex items-center gap-1.5"><i data-lucide="clock" class="text-brand-red" width="14"></i> ~60 min</span>
+                            <span class="flex items-center gap-1.5"><i data-lucide="euro" class="text-brand-red" width="14"></i> ~10 EUR</span>
                         </div>
 
                         <div class="flex gap-3">
-                            <button class="bg-gray-100 text-gray-700 px-4 py-3 rounded-xl font-bold flex-1 flex items-center justify-center gap-2 hover:bg-gray-200 transition">
-                                <i data-lucide="map"></i> Maps
+                            <button class="bg-gray-100 text-gray-600 px-4 py-3 rounded-xl text-sm font-bold flex-1 flex items-center justify-center gap-2 hover:bg-gray-200 transition">
+                                <i data-lucide="map" width="16"></i> Maps
                             </button>
-                            <button onclick="addToRoute(1)" class="bg-brand-red text-white px-4 py-3 rounded-xl font-bold flex-1 hover:bg-brand-dark transition shadow-lg shadow-red-900/20">
+                            <button onclick="addToRoute(1)" class="bg-brand-red text-white px-4 py-3 rounded-xl text-sm font-bold w-24 hover:bg-brand-dark transition shadow-lg shadow-red-900/20">
                                 Add
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-[2rem] border border-gray-200 overflow-hidden hover:shadow-2xl transition-all duration-300 group">
-                    <div class="h-64 overflow-hidden relative">
-                        <img src="assets/card_trg.png" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Trg Bana Jelačića">
-                        <span class="absolute top-4 right-4 bg-brand-coral text-white px-3 py-1 rounded-full text-xs font-bold uppercase">Main Event</span>
+                <div class="bg-white rounded-[2.5rem] border border-gray-100 shadow-card overflow-hidden hover:shadow-2xl transition-all duration-300 group flex flex-col h-full">
+                    <div class="h-64 overflow-hidden relative p-2">
+                        <img src="assets/card_trg.png" class="w-full h-full object-cover rounded-[2rem] group-hover:scale-105 transition-transform duration-700" alt="Trg Bana Jelačića">
+                        <span class="absolute top-6 right-6 bg-brand-coral text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide shadow-sm">Main Event</span>
                     </div>
-                    <div class="p-8">
+                    <div class="px-8 pb-8 pt-4 flex-1 flex flex-col">
                         <h3 class="text-2xl font-bold font-serif mb-2">Trg Bana Jelačića</h3>
-                        <p class="text-gray-500 text-sm mb-6 line-clamp-2">The main square featuring the giant Christmas tree and traditional food stalls.</p>
+                        <p class="text-gray-400 text-xs mb-6 line-clamp-2 leading-relaxed">The main square featuring the giant Christmas tree and traditional food stalls.</p>
                         
-                        <div class="flex items-center gap-4 text-sm font-semibold text-gray-400 mb-6">
-                            <span class="flex items-center gap-1"><i data-lucide="clock" width="16"></i> ~45 min</span>
-                            <span class="flex items-center gap-1"><i data-lucide="euro" width="16"></i> ~15 EUR</span>
+                        <div class="flex items-center gap-4 text-xs font-bold text-gray-500 mb-6 mt-auto">
+                            <span class="flex items-center gap-1.5"><i data-lucide="clock" class="text-brand-red" width="14"></i> ~45 min</span>
+                            <span class="flex items-center gap-1.5"><i data-lucide="euro" class="text-brand-red" width="14"></i> ~15 EUR</span>
                         </div>
 
                         <div class="flex gap-3">
-                            <button class="bg-gray-100 text-gray-700 px-4 py-3 rounded-xl font-bold flex-1 flex items-center justify-center gap-2 hover:bg-gray-200 transition">
-                                <i data-lucide="map"></i> Maps
+                            <button class="bg-gray-100 text-gray-600 px-4 py-3 rounded-xl text-sm font-bold flex-1 flex items-center justify-center gap-2 hover:bg-gray-200 transition">
+                                <i data-lucide="map" width="16"></i> Maps
                             </button>
-                            <button onclick="addToRoute(2)" class="bg-brand-red text-white px-4 py-3 rounded-xl font-bold flex-1 hover:bg-brand-dark transition shadow-lg shadow-red-900/20">
+                            <button onclick="addToRoute(2)" class="bg-brand-red text-white px-4 py-3 rounded-xl text-sm font-bold w-24 hover:bg-brand-dark transition shadow-lg shadow-red-900/20">
                                 Add
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-[2rem] border border-gray-200 overflow-hidden hover:shadow-2xl transition-all duration-300 group">
-                    <div class="h-64 overflow-hidden relative">
-                        <img src="assets/card_ice.png" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Ice Park Tomislavac">
-                        <span class="absolute top-4 right-4 bg-brand-coral text-white px-3 py-1 rounded-full text-xs font-bold uppercase">Activity</span>
+                <div class="bg-white rounded-[2.5rem] border border-gray-100 shadow-card overflow-hidden hover:shadow-2xl transition-all duration-300 group flex flex-col h-full">
+                    <div class="h-64 overflow-hidden relative p-2">
+                        <img src="assets/card_ice.png" class="w-full h-full object-cover rounded-[2rem] group-hover:scale-105 transition-transform duration-700" alt="Ice Park">
+                        <span class="absolute top-6 right-6 bg-brand-coral text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide shadow-sm">Activity</span>
                     </div>
-                    <div class="p-8">
+                    <div class="px-8 pb-8 pt-4 flex-1 flex flex-col">
                         <h3 class="text-2xl font-bold font-serif mb-2">Ice Park Tomislavac</h3>
-                        <p class="text-gray-500 text-sm mb-6 line-clamp-2">Magical ice skating rink surrounded by historic architecture and lights.</p>
+                        <p class="text-gray-400 text-xs mb-6 line-clamp-2 leading-relaxed">Magical ice skating rink surrounded by historic architecture and lights.</p>
                         
-                        <div class="flex items-center gap-4 text-sm font-semibold text-gray-400 mb-6">
-                            <span class="flex items-center gap-1"><i data-lucide="clock" width="16"></i> ~90 min</span>
-                            <span class="flex items-center gap-1"><i data-lucide="euro" width="16"></i> ~25 EUR</span>
+                        <div class="flex items-center gap-4 text-xs font-bold text-gray-500 mb-6 mt-auto">
+                            <span class="flex items-center gap-1.5"><i data-lucide="clock" class="text-brand-red" width="14"></i> ~90 min</span>
+                            <span class="flex items-center gap-1.5"><i data-lucide="euro" class="text-brand-red" width="14"></i> ~25 EUR</span>
                         </div>
 
                         <div class="flex gap-3">
-                            <button class="bg-gray-100 text-gray-700 px-4 py-3 rounded-xl font-bold flex-1 flex items-center justify-center gap-2 hover:bg-gray-200 transition">
-                                <i data-lucide="map"></i> Maps
+                            <button class="bg-gray-100 text-gray-600 px-4 py-3 rounded-xl text-sm font-bold flex-1 flex items-center justify-center gap-2 hover:bg-gray-200 transition">
+                                <i data-lucide="map" width="16"></i> Maps
                             </button>
-                            <button onclick="addToRoute(3)" class="bg-brand-red text-white px-4 py-3 rounded-xl font-bold flex-1 hover:bg-brand-dark transition shadow-lg shadow-red-900/20">
+                            <button onclick="addToRoute(3)" class="bg-brand-red text-white px-4 py-3 rounded-xl text-sm font-bold w-24 hover:bg-brand-dark transition shadow-lg shadow-red-900/20">
                                 Add
                             </button>
                         </div>
@@ -205,51 +213,45 @@
 
     </main>
 
-    <footer class="bg-[#A31621] text-white pt-20 pb-12 mt-20">
-        <div class="max-w-[1400px] mx-auto px-6 grid md:grid-cols-3 gap-12 border-b border-white/20 pb-12">
-            
-            <div>
-                <h4 class="font-serif font-bold text-xl mb-6">OPENING HOURS</h4>
-                <div class="space-y-2 text-white/80 text-sm font-medium">
-                    <p class="flex justify-between max-w-[200px]"><span>MON - FRI</span> <span>11 - 22</span></p>
-                    <p class="flex justify-between max-w-[200px]"><span>SATURDAY</span> <span>10 - 23</span></p>
-                    <p class="flex justify-between max-w-[200px]"><span>SUNDAY</span> <span>10 - 21</span></p>
+    <footer class="bg-brand-red text-white pt-16 pb-12 mt-20">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-12 border-b border-white/20 pb-12">
+                <div>
+                    <h4 class="font-sans font-bold text-sm tracking-widest mb-6 uppercase opacity-80">Opening Hours</h4>
+                    <div class="space-y-2 text-white text-sm font-medium">
+                        <p class="flex justify-between max-w-[200px]"><span class="opacity-70">MON - FRI</span> <span>11 - 22</span></p>
+                        <p class="flex justify-between max-w-[200px]"><span class="opacity-70">SATURDAY</span> <span>10 - 23</span></p>
+                        <p class="flex justify-between max-w-[200px]"><span class="opacity-70">SUNDAY</span> <span>10 - 21</span></p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="md:text-center">
-                 <h4 class="font-serif font-bold text-xl mb-6">SOCIAL MEDIA</h4>
-                 <div class="flex md:justify-center gap-6">
-                    <a href="#" class="p-2 bg-white/10 rounded-lg hover:bg-white hover:text-[#A31621] transition-all"><i data-lucide="instagram"></i></a>
-                    <a href="#" class="p-2 bg-white/10 rounded-lg hover:bg-white hover:text-[#A31621] transition-all"><i data-lucide="facebook"></i></a>
-                    <a href="#" class="p-2 bg-white/10 rounded-lg hover:bg-white hover:text-[#A31621] transition-all"><i data-lucide="twitter"></i></a>
+                <div class="hidden md:flex flex-col items-center justify-center">
+                    <i data-lucide="snowflake" class="w-12 h-12 mb-4 text-white opacity-20"></i>
                  </div>
-            </div>
 
-            <div class="md:text-right">
-                <div class="flex items-center gap-2 justify-start md:justify-end mb-4">
-                    <i data-lucide="snowflake" class="w-6 h-6"></i>
-                    <span class="text-xl font-serif font-bold">AdventZagreb</span>
+                <div class="md:text-right">
+                     <h4 class="font-sans font-bold text-sm tracking-widest mb-6 uppercase opacity-80">Social Media</h4>
+                     <div class="flex md:justify-end gap-4">
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-brand-red transition-all"><i data-lucide="instagram" width="20"></i></a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-brand-red transition-all"><i data-lucide="facebook" width="20"></i></a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-brand-red transition-all"><i data-lucide="music" width="20"></i></a> </div>
                 </div>
-                <p class="text-white/60 text-sm max-w-xs ml-auto">
-                    The unofficial digital guide to the most magical Christmas market in Europe. Created with love.
-                </p>
             </div>
-        </div>
 
-        <div class="max-w-[1400px] mx-auto px-6 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-white/40 uppercase font-bold tracking-widest gap-4">
-            <div class="flex gap-8">
-                <a href="#" class="hover:text-white">About</a>
-                <a href="#" class="hover:text-white">Cookie Policy</a>
-                <a href="#" class="hover:text-white">Privacy</a>
+            <div class="pt-8 flex flex-col md:flex-row justify-between items-center text-[10px] text-white/60 uppercase font-bold tracking-widest gap-4">
+                <div class="flex gap-8">
+                    <a href="#" class="hover:text-white transition-colors">About</a>
+                    <a href="#" class="hover:text-white transition-colors">Cookie Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Privacy</a>
+                </div>
+                <p>&copy; 2025 Advent Zagreb.</p>
             </div>
-            <p>&copy; 2025 Advent Zagreb.</p>
         </div>
     </footer>
 
     <script src="script.js"></script>
     <script>
-        lucide.createIcons(); // Initialize icons
+        lucide.createIcons();
     </script>
 </body>
 </html>
