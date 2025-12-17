@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advent Zagreb - Home</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { serif: ['Georgia', 'serif'], sans: ['Inter', 'sans-serif'] },
+                    animation: { 'spin-slow': 'spin 3s linear infinite' }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans text-gray-900 bg-white min-h-screen flex flex-col">
+
+    <div id="snow-container"></div>
+
+    <nav class="fixed w-full z-40 bg-white/90 backdrop-blur-md border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="bg-red-600 text-white p-2 rounded-lg">
+                    <i data-lucide="star" class="fill-current"></i>
+                </div>
+                <span class="text-xl font-serif font-bold tracking-tight">Advent<span class="text-red-600">Zagreb</span></span>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="font-medium text-red-600">Home</a>
+                <a href="gallery.html" class="font-medium text-gray-500 hover:text-red-600">Gallery</a>
+                <a href="route.html" class="px-5 py-2 rounded-full font-bold bg-gray-100 text-gray-600 hover:bg-gray-200">
+                    My Route
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow animate-fadeIn">
+        
+        <div class="relative h-[60vh] min-h-[500px] bg-red-950 flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 bg-cover bg-center z-0" style="background-image: url('https://www.adventzagreb.hr/images/og-image.jpg')"></div>
+            
+            <div class="absolute inset-0 bg-black/40 z-10"></div>
+            
+            <div class="relative z-20 text-center text-white px-4">
+                <div class="flex justify-center mb-6">
+                    <i data-lucide="snowflake" width="64" height="64" class="animate-spin-slow text-yellow-400 opacity-80"></i>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-serif font-bold mb-6 drop-shadow-2xl">
+                    Advent <span class="text-yellow-400">Zagreb</span>
+                </h1>
+                <p class="text-xl opacity-90 font-light mb-10 max-w-2xl mx-auto">
+                    Experience the warmth, lights, and magic of Europe's most charming Christmas market.
+                </p>
+                <a href="gallery.html" class="inline-flex items-center gap-2 bg-white text-red-900 px-8 py-4 rounded-full font-bold text-lg hover:bg-yellow-400 transition-all shadow-xl hover:scale-105">
+                    Start Your Journey <i data-lucide="arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 py-16">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <div class="inline-block bg-red-100 text-red-800 px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wider">
+                        Welcome
+                    </div>
+                    <h2 class="text-4xl font-serif font-bold text-gray-900">
+                        The Magic of the <br/> festive season.
+                    </h2>
+                    <p class="text-lg text-gray-600">
+                        Zagreb offers a special atmosphere which must be experienced. The city streets and squares invite you to let your hair down and partake in singing, dancing, and other kinds of entertainment with family and friends.
+                    </p>
+                </div>
+                <div class="relative h-[400px] rounded-3xl overflow-hidden shadow-2xl rotate-2 hover:rotate-0 transition-all duration-500">
+                    <img src="https://www.adventzagreb.hr/images/og-image.jpg" class="object-cover w-full h-full" alt="Zagreb Advent">
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-gray-900 text-gray-400 py-12">
+        <div class="max-w-7xl mx-auto px-6 text-center md:text-left">
+            <p class="text-sm">© 2024 Advent Zagreb Planner. Built with ❤️</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
