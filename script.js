@@ -19,3 +19,17 @@ function createSnowflake() {
 }
 
 setInterval(createSnowflake, 100);
+
+function toggleSound() {
+    const video = document.getElementById('hero_video');
+    const icon = document.getElementById('sound-icon');
+    
+    if (video.muted) {
+        video.muted = false;
+        icon.setAttribute('data-lucide', 'volume-2'); 
+    } else {
+        video.muted = true;
+        icon.setAttribute('data-lucide', 'volume-x');
+    }
+    lucide.createIcons();
+}
